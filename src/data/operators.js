@@ -36,7 +36,7 @@ export const OPERATORS = [
   { name: "Glaz", side: "atk", role: "Recon / Sniper", speed: 2, armor: 2, gadget: "Flip Sight",
     gadgetDesc: "Thermal scope that sees clearly through smoke, letting him hold or pick through Smoke's and Fenrir's gas clouds.",
     difficulty: "Hard",
-    counters: ["Break line of sight through gas rather than standing still in it", "He can't see body outlines through solid walls, only through smoke — bait him off a false smoke angle"],
+    counters: ["Break line of sight through gas rather than standing still in it", "He can't see body outlines through solid walls, only through gas clouds — bait him off a false gas angle"],
     champion: ["Pair with Smoke or Fenrir on your own team's push to hold an exterior angle nobody else can contest through the gas", "Reposition every few picks — his sightlines are usually static and get read fast"] },
   { name: "Fuze", side: "atk", role: "Area Denial", speed: 2, armor: 2, gadget: "Cluster Charge",
     gadgetDesc: "Wall or ceiling-mounted charge that fires a spread of cluster munitions into the room behind it.",
@@ -51,12 +51,12 @@ export const OPERATORS = [
   { name: "IQ", side: "atk", role: "Recon", speed: 3, armor: 1, gadget: "Electronics Detector",
     gadgetDesc: "Handheld scanner that reveals every active electronic gadget through walls in a wide radius.",
     difficulty: "Easy",
-    counters: ["Non-electronic gadgets (Kapkan trap, Frost mat, Castle panel) are invisible to her scanner", "Her scan only shows gadgets, not operators — she still has to peek to confirm a kill"],
+    counters: ["Non-electronic traps and fortifications are invisible to her scanner — it only reads powered gadgets", "Her scan only shows gadgets, not operators — she still has to peek to confirm a kill"],
     champion: ["Scan before every breach, not just on entry — mid-round scans catch relocated Jäger/Bandit gear", "Call out gadget clusters, not individual pings — three gadgets in one room is a heavier anchor than usual"] },
   { name: "Buck", side: "atk", role: "Entry / Breach", speed: 3, armor: 1, gadget: "Skeleton Key",
     gadgetDesc: "Shotgun underbarrel attachment that punches vertical holes through floors and soft walls without a full breach.",
     difficulty: "Normal",
-    counters: ["Stand off the exact hole line — the shots are vertical and predictable once heard", "Mira Black Mirrors and Castle panels aren't affected, so gadget-heavy anchors still hold"],
+    counters: ["Stand off the exact hole line — the shots are vertical and predictable once heard", "Reinforced gadget setups (one-way mirrors, armor panels) are untouched by this, so gadget-heavy anchors still hold"],
     champion: ["Frag through the floor first, shoot second — the grenade often does the work the shots would've had to finish", "Use it to check a hatch from below before a teammate commits to vaulting it"] },
   { name: "Blackbeard", side: "atk", role: "Support", speed: 2, armor: 2, gadget: "Rifle Shield",
     gadgetDesc: "Removable rifle-mounted ballistic plate that blocks a headshot outright when aiming down sights.",
@@ -96,7 +96,7 @@ export const OPERATORS = [
   { name: "Lion", side: "atk", role: "Intel", speed: 2, armor: 2, gadget: "EE-ONE-D",
     gadgetDesc: "Deploys a scanning drone that force-reveals any moving defender across the entire map for a brief pulse.",
     difficulty: "Normal",
-    counters: ["Stand completely still during the scan window — it only tags movement", "Time your rotate to land just after a pulse ends, not during it"],
+    counters: ["Stand completely still during the scan window — it only tags movement", "Time your rotate to land just after a scan window ends, not during it"],
     champion: ["Scan right as your team commits to a breach, not before — it locks down roamer repositioning at the exact moment it matters", "Use consecutive scans to zone a roamer into a single safe spot, then have a teammate clear it"] },
   { name: "Finka", side: "atk", role: "Support", speed: 3, armor: 1, gadget: "Adrenal Surge",
     gadgetDesc: "Team-wide buff that heals damage over time and clears negative status effects like concussion or disorientation.",
@@ -298,7 +298,7 @@ export const OPERATORS = [
   { name: "Clash", side: "def", role: "Crowd Control", speed: 1, armor: 3, gadget: "CCE Shield",
     gadgetDesc: "Electrified riser shield that slows and damages attackers in front of her while she advances, immune to most flashes.",
     difficulty: "Hard",
-    counters: ["Flank her — the shield only covers her front", "Bait her shock pulse, then punish the brief window before she can raise it again"],
+    counters: ["Flank her — the shield only covers her front", "Bait her shield's shock jolt, then punish the brief window before she can raise it again"],
     champion: ["Use her to hold a hallway chokepoint solo, freeing the rest of the team to stack elsewhere", "Advance slowly into a stalled push rather than holding stationary — the shock deals more value moving forward"] },
   { name: "Kaid", side: "def", role: "Anti-Breach", speed: 2, armor: 2, gadget: "Rtila Electroclaw",
     gadgetDesc: "Electrifies reinforced walls and defender gadgets, frying breaching charges the same way Bandit's battery does.",
@@ -358,7 +358,7 @@ export const OPERATORS = [
   { name: "Solis", side: "def", role: "Intel", speed: 2, armor: 2, gadget: "SPEC-IO Electro-Sensor",
     gadgetDesc: "Pulses that reveal every active electronic gadget and pings any attacker caught in an active gadget's effect through walls.",
     difficulty: "Normal",
-    counters: ["Non-electronic attacker tools won't trigger her sensor at all", "The pulse has a cooldown — time pushes for right after she's just used it"],
+    counters: ["Non-electronic attacker tools won't trigger her sensor at all", "Her sensor sweep has a cooldown — time pushes for right after she's just used it"],
     champion: ["Pulse right after hearing a drone or gadget deploy to confirm the exact room, not on a blind timer", "Relay gadget locations to teammates immediately — the intel is only valuable if it's acted on fast"] },
   { name: "Fenrir", side: "def", role: "Area Denial", speed: 2, armor: 2, gadget: "F-NATT Dread Mines",
     gadgetDesc: "Gas mines that trigger a fear effect, blurring vision and forcing attackers to disengage or push blind.",
@@ -388,3 +388,15 @@ export const OPERATORS = [
 ];
 
 export const ROLES = [...new Set(OPERATORS.map((o) => o.role))].sort();
+
+const nameRegex = (name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+
+/** Operators explicitly named in op's own "counters" text — i.e. who documented-counters op. */
+export const whoCounters = (op) => {
+  const text = op.counters.join(" ");
+  return OPERATORS.filter((o) => o.name !== op.name && nameRegex(o.name).test(text));
+};
+
+/** Opposing operators whose own "counters" text names op — i.e. who op documented-counters. */
+export const whoOpCounters = (op) =>
+  OPERATORS.filter((o) => o.side !== op.side && nameRegex(op.name).test(o.counters.join(" ")));

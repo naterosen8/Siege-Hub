@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { C } from "../theme.js";
 import { Tag, SectionLabel, Panel } from "../components/ui.jsx";
 import { TIPS } from "../data/meta.js";
-import { OPERATORS } from "../data/operators.js";
+import { OPERATORS, whoCounters } from "../data/operators.js";
 
 const PHASES = [
   { key: "all", label: "All Phases" },
@@ -62,7 +62,10 @@ export default function GameSense() {
   const opMatches = useMemo(() => {
     const q = opQuery.trim().toLowerCase();
     if (!q) return [];
-    return OPERATORS.filter((o) => o.name.toLowerCase().includes(q)).slice(0, 6);
+    return OPERATORS.filter((o) => o.name.toLowerCase().includes(q)).slice(0, 6).map((op) => ({
+      ...op,
+      deniedBy: whoCounters(op),
+    }));
   }, [opQuery]);
 
   return (
@@ -124,6 +127,17 @@ export default function GameSense() {
                 </Link>
                 <Tag tone={op.side}>{op.side === "atk" ? "ATTACKER" : "DEFENDER"}</Tag>
               </div>
+
+              <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: `1px solid ${C.line}` }}>
+                <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>DIRECT COUNTERS — WHO SHUTS THEM DOWN</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {op.deniedBy.length === 0 && <span style={{ color: C.mute, fontSize: 13 }}>No specific operator named in the counters below — read them as general play patterns instead.</span>}
+                  {op.deniedBy.map((o) => (
+                    <Link key={o.name} to={`/operators/${encodeURIComponent(o.name)}`}><Tag tone={o.side}>{o.name}</Tag></Link>
+                  ))}
+                </div>
+              </div>
+
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }} className="detail-grid">
                 <div>
                   <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>COUNTERED BY</div>

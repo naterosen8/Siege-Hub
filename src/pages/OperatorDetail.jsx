@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { C, tierColor } from "../theme.js";
 import { Tag, Pips, Panel } from "../components/ui.jsx";
-import { OPERATORS } from "../data/operators.js";
+import { OPERATORS, whoCounters, whoOpCounters } from "../data/operators.js";
 import { tierOf } from "../data/meta.js";
 
 export default function OperatorDetail() {
@@ -10,15 +10,8 @@ export default function OperatorDetail() {
   const nav = useNavigate();
   const op = OPERATORS.find((o) => o.name === decodeURIComponent(name));
 
-  const deniedBy = useMemo(() => {
-    if (!op) return [];
-    return OPERATORS.filter((o) => o.side !== op.side && o.counters.some((c) => c.toLowerCase().includes(op.name.toLowerCase())));
-  }, [op]);
-
-  const denies = useMemo(() => {
-    if (!op) return [];
-    return OPERATORS.filter((o) => o.side !== op.side && op.counters.some((c) => c.toLowerCase().includes(o.name.toLowerCase())));
-  }, [op]);
+  const deniedBy = useMemo(() => (op ? whoCounters(op) : []), [op]);
+  const denies = useMemo(() => (op ? whoOpCounters(op) : []), [op]);
 
   const sameRole = useMemo(() => {
     if (!op) return [];
