@@ -48,8 +48,17 @@ export default function Maps() {
       <div className="fade-up" key={map.name} style={{ border: `1px solid ${C.line}`, borderRadius: 4, background: C.panel, padding: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
           <h3 className="disp" style={{ fontSize: 28, margin: 0, textTransform: "uppercase" }}>{map.name}</h3>
-          <Tag tone={STATUS_TONE[map.status] || "mute"}>{map.status}</Tag>
+          <div style={{ display: "flex", gap: 8 }}>
+            {!map.verified && <Tag tone="def">UNVERIFIED LAYOUT</Tag>}
+            <Tag tone={STATUS_TONE[map.status] || "mute"}>{map.status}</Tag>
+          </div>
         </div>
+
+        {!map.verified && (
+          <p style={{ fontSize: 12.5, color: C.mute, marginTop: 10, marginBottom: 0, lineHeight: 1.6 }}>
+            Room names and site pairings on this map haven't been independently confirmed against reliable sources — treat them as approximate until verified.
+          </p>
+        )}
 
         <div style={{ display: "flex", gap: 6, marginTop: 18, marginBottom: 18, flexWrap: "wrap" }}>
           {map.floors.map((f, i) => (
@@ -62,8 +71,14 @@ export default function Maps() {
 
         {combos.length > 0 && (
           <div style={{ marginBottom: 18, border: `1px solid ${C.atk}`, borderRadius: 3, padding: "12px 16px", background: "rgba(156,59,38,0.06)" }}>
-            <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>BOMBSITE COMBO — {floor.name}</div>
-            <div className="disp" style={{ fontSize: 17, textTransform: "uppercase" }}>{combos.join(" · ")}</div>
+            <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>
+              BOMBSITE COMBO{combos.length > 1 ? "S" : ""} — {floor.name}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              {combos.map((c, i) => (
+                <div key={i} className="disp" style={{ fontSize: 17, textTransform: "uppercase" }}>{c}</div>
+              ))}
+            </div>
           </div>
         )}
 
