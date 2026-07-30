@@ -3,6 +3,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import { C } from "./theme.js";
 import { Fonts } from "./components/ui.jsx";
 import Home from "./pages/Home.jsx";
+import OperatorsHub from "./pages/OperatorsHub.jsx";
 import Operators from "./pages/Operators.jsx";
 import OperatorDetail from "./pages/OperatorDetail.jsx";
 import Matchup from "./pages/Matchup.jsx";
@@ -51,8 +52,10 @@ export default function SiegeHub() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<><Home /><Operators /><GameSense /></>} />
-        <Route path="/operators" element={<Operators />} />
+        <Route path="/" element={<><Home /><GameSense /></>} />
+        <Route path="/operators" element={<OperatorsHub />} />
+        <Route path="/operators/attack" element={<Operators />} />
+        <Route path="/operators/defense" element={<Operators />} />
         <Route path="/operators/:name" element={<OperatorDetail />} />
         <Route path="/matchup" element={<Matchup />} />
         <Route path="/gamesense" element={<GameSense />} />

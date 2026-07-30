@@ -1,19 +1,27 @@
 import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { C, tierColor } from "../theme.js";
 import { Tag, Pips, SectionLabel } from "../components/ui.jsx";
-import { OPERATORS, ROLES } from "../data/operators.js";
+import { OPERATORS } from "../data/operators.js";
 import { tierOf } from "../data/meta.js";
 
+const SIDE_KEY = { attack: "atk", defense: "def" };
+const SIDE_LABEL = { atk: "Attackers", def: "Defenders" };
+const OTHER_PATH = { atk: "/operators/defense", def: "/operators/attack" };
+
 export default function Operators() {
-  const [side, setSide] = useState("all");
+  const { side: sideParam } = useParams();
+  const side = SIDE_KEY[sideParam] || "atk";
+
   const [role, setRole] = useState("all");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState("name");
 
+  const roles = useMemo(() => [...new Set(OPERATORS.filter((o) => o.side === side).map((o) => o.role))].sort(), [side]);
+
   const list = useMemo(() => {
     let l = OPERATORS.filter((op) =>
-      (side === "all" || op.side === side) &&
+      op.side === side &&
       (role === "all" || op.role === role) &&
       op.name.toLowerCase().includes(q.toLowerCase())
     );
@@ -29,10 +37,14 @@ export default function Operators() {
   }, [side, role, q, sort]);
 
   return (
-    <div style={{ maxWidth: 1120, margin: "0 auto", padding: "70px 24px" }}>
-      <SectionLabel n="01" sub="Every operator in the game. Click one for full champion-level breakdowns — counters, difficulty, and synergy picks.">
-        Operator Database
-      </SectionLabel>
+    <div key={side} className="fade-up" style={{ maxWidth: 1120, margin: "0 auto", padding: "70px 24px" }}>
+      <Link to="/operators" className="mono navbtn" style={{ color: C.mute, fontSize: 12.5 }}>← CHOOSE SIDE</Link>
+
+      <div style={{ marginTop: 18 }}>
+        <SectionLabel n="01" sub={`All ${SIDE_LABEL[side].toLowerCase()} in the game. Click one for full champion-level breakdowns — counters, difficulty, and synergy picks.`}>
+          {SIDE_LABEL[side]}
+        </SectionLabel>
+      </div>
 
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 26 }}>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="SEARCH OPERATOR..." className="mono"
@@ -40,7 +52,7 @@ export default function Operators() {
         <select value={role} onChange={(e) => setRole(e.target.value)} className="mono"
           style={{ background: C.panel, border: `1px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 3, fontSize: 12.5 }}>
           <option value="all">ALL ROLES</option>
-          {ROLES.map((r) => <option key={r} value={r}>{r.toUpperCase()}</option>)}
+          {roles.map((r) => <option key={r} value={r}>{r.toUpperCase()}</option>)}
         </select>
         <select value={sort} onChange={(e) => setSort(e.target.value)} className="mono"
           style={{ background: C.panel, border: `1px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 3, fontSize: 12.5 }}>
@@ -48,12 +60,10 @@ export default function Operators() {
           <option value="tier">SORT: TIER</option>
           <option value="speed">SORT: SPEED</option>
         </select>
-        {["all", "atk", "def"].map((s) => (
-          <button key={s} onClick={() => setSide(s)} className="navbtn mono"
-            style={{ background: side === s ? C.panel2 : "transparent", border: `1px solid ${side === s ? C.mute : C.line}`, color: side === s ? C.paper : C.mute, padding: "9px 16px", fontSize: 12.5, borderRadius: 3, cursor: "pointer" }}>
-            {s === "all" ? "ALL" : s === "atk" ? "ATTACK" : "DEFENSE"}
-          </button>
-        ))}
+        <Link to={OTHER_PATH[side]} className="navbtn mono"
+          style={{ display: "flex", alignItems: "center", background: "transparent", border: `1px solid ${C.line}`, color: C.mute, padding: "9px 16px", fontSize: 12.5, borderRadius: 3 }}>
+          SWITCH TO {SIDE_LABEL[side === "atk" ? "def" : "atk"].toUpperCase()}
+        </Link>
       </div>
 
       <div className="mono" style={{ fontSize: 12, color: C.mute, marginBottom: 14 }}>{list.length} OPERATOR{list.length === 1 ? "" : "S"}</div>
