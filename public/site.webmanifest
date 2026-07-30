@@ -1,0 +1,13 @@
+{
+  "name": "Site//Intel — R6 Siege Strategy Hub",
+  "short_name": "Site//Intel",
+  "description": "Champion-level Rainbow Six Siege strategy — operator counters, live matchups, and floor-by-floor map intel.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E3DBC4",
+  "theme_color": "#9C3B26",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
