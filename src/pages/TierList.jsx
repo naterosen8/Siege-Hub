@@ -27,7 +27,7 @@ function TierRow({ tier, side }) {
 export default function TierList() {
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", padding: "70px 24px" }}>
-      <SectionLabel n="05" sub={TIER_NOTE}>
+      <SectionLabel n="04" sub={TIER_NOTE}>
         Meta Tier List
       </SectionLabel>
 

@@ -19,7 +19,7 @@ export default function Matchup() {
 
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", padding: "70px 24px" }}>
-      <SectionLabel n="03" sub="Pick an attacker and a defender to pull any documented direct interaction between their gadgets, plus each operator's general profile.">
+      <SectionLabel n="02" sub="Pick an attacker and a defender to pull any documented direct interaction between their gadgets, plus each operator's general profile.">
         Matchup Tool
       </SectionLabel>
       <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 16, alignItems: "center", marginBottom: 24 }}>

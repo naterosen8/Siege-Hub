@@ -9,7 +9,7 @@ export default function GameSense() {
   const list = TIPS.filter((t) => cat === "All" || t.cat === cat);
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", padding: "70px 24px" }}>
-      <SectionLabel n="04" sub="High-level principles that separate a champion-level read from a guess — organized by phase of the round.">
+      <SectionLabel n="03" sub="High-level principles that separate a champion-level read from a guess — organized by phase of the round.">
         Game Sense
       </SectionLabel>
       <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>

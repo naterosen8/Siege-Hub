@@ -6,7 +6,6 @@ import Home from "./pages/Home.jsx";
 import Operators from "./pages/Operators.jsx";
 import OperatorDetail from "./pages/OperatorDetail.jsx";
 import Matchup from "./pages/Matchup.jsx";
-import Maps from "./pages/Maps.jsx";
 import GameSense from "./pages/GameSense.jsx";
 import TierList from "./pages/TierList.jsx";
 
@@ -14,7 +13,6 @@ const NAV = [
   { to: "/", label: "Home", end: true },
   { to: "/operators", label: "Operators" },
   { to: "/matchup", label: "Matchup" },
-  { to: "/maps", label: "Maps" },
   { to: "/gamesense", label: "Game Sense" },
   { to: "/tierlist", label: "Tier List" },
 ];
@@ -53,12 +51,10 @@ export default function SiegeHub() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<><Home /><Operators /><Maps /><GameSense /></>} />
+        <Route path="/" element={<><Home /><Operators /><GameSense /></>} />
         <Route path="/operators" element={<Operators />} />
         <Route path="/operators/:name" element={<OperatorDetail />} />
         <Route path="/matchup" element={<Matchup />} />
-        <Route path="/maps" element={<Maps />} />
-        <Route path="/maps/:mapName" element={<Maps />} />
         <Route path="/gamesense" element={<GameSense />} />
         <Route path="/tierlist" element={<TierList />} />
         <Route path="*" element={<Home />} />
