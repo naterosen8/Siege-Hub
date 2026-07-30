@@ -74,38 +74,7 @@ export default function GameSense() {
         Game Sense
       </SectionLabel>
 
-      <ShuffleTip key={phase + side} pool={list} />
-
-      <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
-        {PHASES.map((p) => (
-          <button key={p.key} onClick={() => setPhase(p.key)} className="navbtn mono"
-            style={{ background: phase === p.key ? C.panel2 : "transparent", border: `1px solid ${phase === p.key ? C.mute : C.line}`, color: phase === p.key ? C.paper : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 3, cursor: "pointer" }}>
-            {p.label.toUpperCase()}
-          </button>
-        ))}
-      </div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
-        {SIDES.map((s) => (
-          <button key={s.key} onClick={() => setSide(s.key)} className="navbtn mono"
-            style={{ background: side === s.key ? C.panel2 : "transparent", border: `1px solid ${side === s.key ? C.mute : C.line}`, color: side === s.key ? C.paper : C.mute, padding: "6px 12px", fontSize: 11.5, borderRadius: 3, cursor: "pointer" }}>
-            {s.label.toUpperCase()}
-          </button>
-        ))}
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14, marginBottom: 50 }}>
-        {list.map((t, i) => (
-          <div key={i} className="card" style={{ border: `1px solid ${C.line}`, borderRadius: 4, padding: 18, background: C.panel }}>
-            <Tag tone={t.side === "atk" ? "atk" : t.side === "def" ? "def" : "mute"}>
-              {PHASES.find((p) => p.key === t.phase)?.label.toUpperCase()}{t.side !== "both" ? ` · ${t.side.toUpperCase()}` : ""}
-            </Tag>
-            <p style={{ fontSize: 14, lineHeight: 1.6, marginTop: 12, marginBottom: 0 }}>{t.text}</p>
-          </div>
-        ))}
-        {list.length === 0 && <p style={{ color: C.mute, fontSize: 14 }}>No principles match that filter combination.</p>}
-      </div>
-
-      <div style={{ borderTop: `1px solid ${C.line}`, paddingTop: 34 }}>
+      <div style={{ marginBottom: 34 }}>
         <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 10 }}>OPERATOR-SPECIFIC INTEL</div>
         <h3 className="disp" style={{ fontSize: 22, margin: "0 0 14px", textTransform: "uppercase" }}>Search an operator's counters &amp; champion plays</h3>
         <input value={opQuery} onChange={(e) => setOpQuery(e.target.value)} placeholder="SEARCH OPERATOR..." className="mono"
@@ -155,6 +124,37 @@ export default function GameSense() {
             </div>
           ))}
         </div>
+      </div>
+
+      <ShuffleTip key={phase + side} pool={list} />
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+        {PHASES.map((p) => (
+          <button key={p.key} onClick={() => setPhase(p.key)} className="navbtn mono"
+            style={{ background: phase === p.key ? C.panel2 : "transparent", border: `1px solid ${phase === p.key ? C.mute : C.line}`, color: phase === p.key ? C.paper : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 3, cursor: "pointer" }}>
+            {p.label.toUpperCase()}
+          </button>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+        {SIDES.map((s) => (
+          <button key={s.key} onClick={() => setSide(s.key)} className="navbtn mono"
+            style={{ background: side === s.key ? C.panel2 : "transparent", border: `1px solid ${side === s.key ? C.mute : C.line}`, color: side === s.key ? C.paper : C.mute, padding: "6px 12px", fontSize: 11.5, borderRadius: 3, cursor: "pointer" }}>
+            {s.label.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14, marginBottom: 50 }}>
+        {list.map((t, i) => (
+          <div key={i} className="card" style={{ border: `1px solid ${C.line}`, borderRadius: 4, padding: 18, background: C.panel }}>
+            <Tag tone={t.side === "atk" ? "atk" : t.side === "def" ? "def" : "mute"}>
+              {PHASES.find((p) => p.key === t.phase)?.label.toUpperCase()}{t.side !== "both" ? ` · ${t.side.toUpperCase()}` : ""}
+            </Tag>
+            <p style={{ fontSize: 14, lineHeight: 1.6, marginTop: 12, marginBottom: 0 }}>{t.text}</p>
+          </div>
+        ))}
+        {list.length === 0 && <p style={{ color: C.mute, fontSize: 14 }}>No principles match that filter combination.</p>}
       </div>
     </div>
   );
