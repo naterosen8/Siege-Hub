@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { C } from "../theme.js";
-import { Tag, SectionLabel, CornerTicks } from "../components/ui.jsx";
-import RoomSchematic from "../components/RoomSchematic.jsx";
-import { MAPS } from "../data/maps.js";
+import { Tag, SectionLabel } from "../components/ui.jsx";
+import RoomGrid from "../components/RoomGrid.jsx";
+import { MAPS, siteCombos } from "../data/maps.js";
 
 const STATUS_TONE = { Ranked: "atk", Casual: "mute", "Dual Front": "def" };
 
@@ -15,16 +15,15 @@ export default function Maps() {
   const active = mapName ? decodeURIComponent(mapName) : MAPS[0].name;
   const map = MAPS.find((m) => m.name === active) || MAPS[0];
   const [floorIdx, setFloorIdx] = useState(0);
-  const [room, setRoom] = useState(null);
 
-  const selectMap = (name) => { nav(`/maps/${encodeURIComponent(name)}`); setFloorIdx(0); setRoom(null); };
+  const selectMap = (name) => { nav(`/maps/${encodeURIComponent(name)}`); setFloorIdx(0); };
   const floor = map.floors[Math.min(floorIdx, map.floors.length - 1)];
-  const selectedRoom = floor.rooms.find((r) => r.name === room);
+  const combos = siteCombos(floor);
   const visibleMaps = MAPS.filter((m) => statusFilter === "all" || m.status === statusFilter);
 
   return (
-    <div style={{ maxWidth: 1120, margin: "0 auto", padding: "70px 24px" }} className="grid-bg">
-      <SectionLabel n="02" sub="Every map in the pool. Switch floors, click a room for reinforcement/hatch status, and read the rotation + champion-level setup notes.">
+    <div style={{ maxWidth: 1120, margin: "0 auto", padding: "70px 24px" }}>
+      <SectionLabel n="02" sub="Every map in the pool. Switch floors, open a room card for its status, and read the rotation + champion-level setup notes.">
         Map Intel
       </SectionLabel>
 
@@ -46,43 +45,31 @@ export default function Maps() {
         ))}
       </div>
 
-      <div className="fade-up" key={map.name} style={{ position: "relative", border: `1px solid ${C.line}`, borderRadius: 4, background: C.panel, padding: 28 }}>
-        <div style={{ position: "absolute", inset: 10, pointerEvents: "none" }}><CornerTicks /></div>
+      <div className="fade-up" key={map.name} style={{ border: `1px solid ${C.line}`, borderRadius: 4, background: C.panel, padding: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
           <h3 className="disp" style={{ fontSize: 28, margin: 0, textTransform: "uppercase" }}>{map.name}</h3>
           <Tag tone={STATUS_TONE[map.status] || "mute"}>{map.status}</Tag>
         </div>
 
-        <div style={{ display: "flex", gap: 6, marginTop: 18, marginBottom: 10, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 6, marginTop: 18, marginBottom: 18, flexWrap: "wrap" }}>
           {map.floors.map((f, i) => (
-            <button key={f.name} onClick={() => { setFloorIdx(i); setRoom(null); }} className="navbtn mono"
-              style={{ background: floorIdx === i ? C.atk : "transparent", color: floorIdx === i ? C.ink : C.mute, border: `1px solid ${floorIdx === i ? C.atk : C.line}`, padding: "5px 12px", fontSize: 12, borderRadius: 3, cursor: "pointer" }}>
+            <button key={f.name} onClick={() => setFloorIdx(i)} className="navbtn mono"
+              style={{ background: floorIdx === i ? C.atk : "transparent", color: floorIdx === i ? C.ink : C.mute, border: `1px solid ${floorIdx === i ? C.atk : C.line}`, padding: "6px 14px", fontSize: 13, borderRadius: 3, cursor: "pointer" }}>
               {f.name}
             </button>
           ))}
         </div>
 
-        <div style={{ border: `1px solid ${C.line}`, borderRadius: 3, padding: 10, background: "rgba(255,255,255,0.015)" }}>
-          <RoomSchematic floor={floor} selected={room} onSelect={setRoom} />
-        </div>
+        {combos.length > 0 && (
+          <div style={{ marginBottom: 18, border: `1px solid ${C.atk}`, borderRadius: 3, padding: "12px 16px", background: "rgba(217,98,43,0.05)" }}>
+            <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>BOMBSITE COMBO — {floor.name}</div>
+            <div className="disp" style={{ fontSize: 17, textTransform: "uppercase" }}>{combos.join(" · ")}</div>
+          </div>
+        )}
 
-        <div className="mono" style={{ display: "flex", gap: 16, marginTop: 10, fontSize: 10.5, color: C.mute, flexWrap: "wrap" }}>
-          <span><span style={{ display: "inline-block", width: 10, height: 10, border: `1px solid ${C.atk}`, background: "rgba(217,98,43,0.1)", verticalAlign: "middle", marginRight: 5 }} />BOMBSITE ROOM</span>
-          <span><span style={{ display: "inline-block", width: 10, height: 10, border: `1px dashed ${C.def}`, verticalAlign: "middle", marginRight: 5 }} />REINFORCEABLE WALL</span>
-          <span><span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: C.ok, verticalAlign: "middle", marginRight: 5 }} />HATCH</span>
-        </div>
+        <RoomGrid floor={floor} />
 
-        <div style={{ marginTop: 12, minHeight: 20, fontSize: 13, color: C.mute }}>
-          {selectedRoom ? (
-            <>Selected: <Tag tone={selectedRoom.site ? "atk" : "mute"}>{selectedRoom.name}</Tag>{" "}
-              {selectedRoom.site ? "— bomb site room" : "— non-objective room"}
-              {selectedRoom.reinforced && " · reinforceable wall/hatch"}
-              {selectedRoom.hatch && " · hatch rotate"}
-            </>
-          ) : "Click a room on the schematic for its status."}
-        </div>
-
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 22 }}>
           <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>ROTATIONS</div>
           <p style={{ fontSize: 14, lineHeight: 1.6, margin: 0, color: C.paper }}>{map.rotations}</p>
         </div>

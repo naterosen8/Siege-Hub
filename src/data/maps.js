@@ -1,18 +1,5 @@
 /* ---------- MAP DATABASE ---------- */
 
-const roomGrid = (rooms) => {
-  const n = rooms.length;
-  const cols = Math.ceil(Math.sqrt(n));
-  const rows = Math.ceil(n / cols);
-  const W = 400, H = 240, pad = 10;
-  const cw = (W - pad * (cols + 1)) / cols;
-  const ch = (H - pad * (rows + 1)) / rows;
-  return rooms.map((r, i) => {
-    const col = i % cols, row = Math.floor(i / cols);
-    return { ...r, x: pad + col * (cw + pad), y: pad + row * (ch + pad), w: cw, h: ch };
-  });
-};
-
 const R = (name, opts = {}) => ({ name, site: false, hatch: false, reinforced: false, ...opts });
 
 const RAW_MAPS = [
@@ -311,7 +298,10 @@ const RAW_MAPS = [
   },
 ];
 
-export const MAPS = RAW_MAPS.map((m) => ({
-  ...m,
-  floors: m.floors.map((f) => ({ ...f, rooms: roomGrid(f.rooms) })),
-}));
+export const MAPS = RAW_MAPS;
+
+/** Bombsite room groupings for a floor, e.g. ["Church + Cash Room"] */
+export const siteCombos = (floor) => {
+  const sites = floor.rooms.filter((r) => r.site).map((r) => r.name);
+  return sites.length ? [sites.join(" + ")] : [];
+};
