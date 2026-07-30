@@ -11,7 +11,7 @@ function RoomCard({ room }) {
       className="navbtn"
       style={{
         textAlign: "left", cursor: "pointer", fontFamily: "inherit",
-        background: room.site ? "rgba(217,98,43,0.06)" : C.panel2,
+        background: room.site ? "rgba(156,59,38,0.07)" : C.panel2,
         border: `1px solid ${open ? C.paper : room.site ? C.atk : C.line}`,
         borderRadius: 4, padding: "14px 16px", width: "100%",
       }}

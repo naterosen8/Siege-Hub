@@ -4,14 +4,14 @@ import { C } from "../theme.js";
 export function Fonts() {
   return (
     <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap');
       * { box-sizing: border-box; }
       body { margin: 0; }
       .hub { font-family: 'IBM Plex Sans', sans-serif; background: ${C.ink}; color: ${C.paper}; min-height: 100vh; }
-      .disp { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 0.02em; }
-      .mono { font-family: 'IBM Plex Mono', monospace; }
+      .disp { font-family: 'Bitter', serif; font-weight: 800; letter-spacing: 0.01em; }
+      .mono { font-family: 'Courier Prime', monospace; }
       .grid-bg {
-        background-image: linear-gradient(${C.line} 1px, transparent 1px), linear-gradient(90deg, ${C.line} 1px, transparent 1px);
+        background-image: linear-gradient(${C.line}55 1px, transparent 1px), linear-gradient(90deg, ${C.line}55 1px, transparent 1px);
         background-size: 40px 40px; background-position: -1px -1px;
       }
       .tick { position: absolute; width: 14px; height: 14px; border: 1px solid ${C.mute}; opacity: 0.5; }
@@ -20,9 +20,7 @@ export function Fonts() {
       .card { transition: border-color .15s ease, transform .15s ease; }
       .card:hover { border-color: ${C.mute}; transform: translateY(-2px); }
       .opcard:hover .opname { color: var(--side); }
-      .room { transition: fill .12s ease, stroke .12s ease; cursor: pointer; }
-      .room:hover rect { stroke: ${C.paper}; }
-      select, input { font-family: 'IBM Plex Mono', monospace; }
+      select, input { font-family: 'Courier Prime', monospace; }
       a, button, select { outline-offset: 3px; }
       a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid ${C.atk}; }
       a { color: inherit; text-decoration: none; }
@@ -36,7 +34,7 @@ export function Fonts() {
 export function Tag({ children, tone = "mute" }) {
   const color = tone === "atk" ? C.atk : tone === "def" ? C.def : tone === "ok" ? C.ok : tone === "s" ? C.s : tone === "a" ? C.a : C.mute;
   return (
-    <span className="mono" style={{ display: "inline-block", fontSize: 12, letterSpacing: "0.04em", color, border: `1px solid ${color}`, borderRadius: 3, padding: "2px 7px", background: "rgba(255,255,255,0.02)" }}>
+    <span className="mono" style={{ display: "inline-block", fontSize: 12, letterSpacing: "0.04em", color, border: `1px solid ${color}`, borderRadius: 3, padding: "2px 7px", background: "rgba(0,0,0,0.03)" }}>
       [{children}]
     </span>
   );

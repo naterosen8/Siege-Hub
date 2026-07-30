@@ -61,7 +61,7 @@ export default function Maps() {
         </div>
 
         {combos.length > 0 && (
-          <div style={{ marginBottom: 18, border: `1px solid ${C.atk}`, borderRadius: 3, padding: "12px 16px", background: "rgba(217,98,43,0.05)" }}>
+          <div style={{ marginBottom: 18, border: `1px solid ${C.atk}`, borderRadius: 3, padding: "12px 16px", background: "rgba(156,59,38,0.06)" }}>
             <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>BOMBSITE COMBO — {floor.name}</div>
             <div className="disp" style={{ fontSize: 17, textTransform: "uppercase" }}>{combos.join(" · ")}</div>
           </div>
@@ -85,7 +85,7 @@ export default function Maps() {
           </div>
         </div>
 
-        <div style={{ marginTop: 16, border: `1px solid ${C.line}`, borderRadius: 3, padding: 14, background: "rgba(217,98,43,0.04)" }}>
+        <div style={{ marginTop: 16, border: `1px solid ${C.line}`, borderRadius: 3, padding: 14, background: "rgba(156,59,38,0.05)" }}>
           <Tag tone="s">CHAMPION SETUP</Tag>
           <p style={{ fontSize: 13.5, lineHeight: 1.6, marginTop: 10, marginBottom: 0 }}>{map.comboTip}</p>
         </div>

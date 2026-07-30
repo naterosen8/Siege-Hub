@@ -1,7 +1,8 @@
+/* "Field Dossier" — aged paper, ink-brown text, oxide-red stamp accent. */
 export const C = {
-  ink: "#0F1214", panel: "#171C1F", panel2: "#1D2327", line: "#262E32",
-  paper: "#E9E6DD", mute: "#7C8790", atk: "#D9622B", def: "#3E8FA6", ok: "#6E9B5E",
-  s: "#D9622B", a: "#C9A24B", b: "#6E9B5E", cc: "#7C8790",
+  ink: "#E3DBC4", panel: "#DACFAE", panel2: "#CFC29E", line: "#B7A87F",
+  paper: "#2A2318", mute: "#6E6248", atk: "#9C3B26", def: "#3E5C74", ok: "#4C5A38",
+  s: "#9C3B26", a: "#8A6A2E", b: "#4C5A38", cc: "#6E6248",
 };
 
 export const tierColor = (t) => (t === "S" ? C.s : t === "A" ? C.a : t === "B" ? C.b : C.cc);

@@ -34,7 +34,7 @@ export default function SiegeHub() {
       <style>{`
         @media (max-width: 720px) { .detail-grid { grid-template-columns: 1fr !important; } }
       `}</style>
-      <nav style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(15,18,20,0.92)", backdropFilter: "blur(6px)", borderBottom: `1px solid ${C.line}`, padding: "14px 24px", display: "flex", alignItems: "center", gap: 26, flexWrap: "wrap" }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(227,219,196,0.92)", backdropFilter: "blur(6px)", borderBottom: `1px solid ${C.line}`, padding: "14px 24px", display: "flex", alignItems: "center", gap: 26, flexWrap: "wrap" }}>
         <NavLink to="/" className="disp" style={{ fontSize: 18, textTransform: "uppercase", letterSpacing: "0.06em", color: C.paper }}>
           Site<span style={{ color: C.atk }}>//</span>Intel
         </NavLink>
