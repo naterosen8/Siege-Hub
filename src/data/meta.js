@@ -22,14 +22,14 @@ export const TIPS = [
   { cat: "Meta", text: "Map-specific operator bans exist for a reason — an operator that's B-tier map-wide can be an auto-pick or an auto-ban on the right map." },
 ];
 
-export const TIER_NOTE = "Community-consensus snapshot, not an official Ubisoft ranking — current picks lean on Nomad, Thatcher, Ace and the newly-added Solid Snake on attack, and Smoke, Mira and Azami on defense.";
+export const TIER_NOTE = "Community-consensus snapshot, not an official Ubisoft ranking — current picks lean on Nomad, Thatcher, Ace, the newly-added Solid Snake, and a freshly reworked Dokkaebi on attack, and Smoke, Mira and Azami on defense.";
 
 /* S/A/B/C tiers — general competitive relevance snapshot. */
 export const TIER_MAP = {
   // S
   Nomad: "S", Thatcher: "S", Ace: "S", "Solid Snake": "S", Smoke: "S", Mira: "S", Azami: "S",
   // A
-  Sledge: "A", Ash: "A", Zofia: "A", Iana: "A", Jackal: "A", Twitch: "A", Osa: "A", Grim: "A", Ram: "A",
+  Sledge: "A", Ash: "A", Zofia: "A", Iana: "A", Jackal: "A", Twitch: "A", Osa: "A", Grim: "A", Ram: "A", Dokkaebi: "A",
   Bandit: "A", Jäger: "A", Melusi: "A", Wamai: "A", Goyo: "A", Oryx: "A", Thorn: "A", Solis: "A", Kaid: "A", Maestro: "A",
   Hibana: "A", Sens: "A", Rauora: "A", Deimos: "A", Skopós: "A", Fenrir: "A",
   // C (niche / low pick-rate)
