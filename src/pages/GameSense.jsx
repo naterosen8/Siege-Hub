@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { C } from "../theme.js";
 import { Tag, SectionLabel, Panel } from "../components/ui.jsx";
-import { TIPS } from "../data/meta.js";
+import { TIPS, SCENARIOS } from "../data/meta.js";
 import { OPERATORS, whoCounters } from "../data/operators.js";
 
 const PHASES = [
@@ -45,6 +45,103 @@ function ShuffleTip({ pool }) {
           SHUFFLE ↻
         </button>
       </div>
+    </Panel>
+  );
+}
+
+function shuffled(list) {
+  const arr = [...list];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function ScenarioQuiz() {
+  const [queue, setQueue] = useState(() => shuffled(SCENARIOS));
+  const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [score, setScore] = useState(0);
+
+  const restart = () => {
+    setQueue(shuffled(SCENARIOS));
+    setIndex(0);
+    setSelected(null);
+    setScore(0);
+  };
+
+  const done = index >= queue.length;
+
+  if (done) {
+    return (
+      <Panel style={{ marginBottom: 30, borderColor: C.a, textAlign: "center" }}>
+        <Tag tone="a">QUIZ COMPLETE</Tag>
+        <div className="disp" style={{ fontSize: 44, margin: "16px 0 6px", color: C.a }}>{score} / {queue.length}</div>
+        <p style={{ color: C.mute, fontSize: 14, margin: "0 0 20px" }}>
+          {score === queue.length ? "Clean sweep." : score >= queue.length * 0.7 ? "Solid game sense." : "Worth another lap through the tips above."}
+        </p>
+        <button onClick={restart} className="navbtn mono"
+          style={{ background: C.a, color: C.ink, border: "none", padding: "10px 20px", fontSize: 13, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>
+          RETAKE QUIZ ↻
+        </button>
+      </Panel>
+    );
+  }
+
+  const current = queue[index];
+  const answered = selected !== null;
+  const phaseLabel = PHASES.find((p) => p.key === current.phase)?.label.toUpperCase();
+
+  const answer = (i) => {
+    if (answered) return;
+    setSelected(i);
+    if (i === current.correct) setScore((s) => s + 1);
+  };
+
+  const advance = () => {
+    setIndex((i) => i + 1);
+    setSelected(null);
+  };
+
+  return (
+    <Panel style={{ marginBottom: 30, borderColor: C.a }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
+        <Tag tone="a">SCENARIO CHECK — {phaseLabel}</Tag>
+        <span className="mono" style={{ fontSize: 12, color: C.mute }}>QUESTION {index + 1} OF {queue.length} · SCORE {score}</span>
+      </div>
+
+      <p style={{ fontSize: 16, lineHeight: 1.6, margin: "0 0 16px", maxWidth: 700 }}>{current.scenario}</p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 700 }}>
+        {current.options.map((opt, i) => {
+          const isCorrect = i === current.correct;
+          const isPicked = i === selected;
+          let border = C.line, color = C.paper;
+          if (answered && isCorrect) { border = C.ok; color = C.ok; }
+          else if (answered && isPicked && !isCorrect) { border = C.atk; color = C.atk; }
+          else if (answered) { color = C.mute; }
+          return (
+            <button key={i} onClick={() => answer(i)} disabled={answered} className="navbtn"
+              style={{ textAlign: "left", background: "transparent", border: `1px solid ${border}`, color, padding: "10px 14px", fontSize: 14, borderRadius: 3, cursor: answered ? "default" : "pointer" }}>
+              {opt}{answered && isCorrect ? "  ✓" : ""}{answered && isPicked && !isCorrect ? "  ✗" : ""}
+            </button>
+          );
+        })}
+      </div>
+
+      {answered && (
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: `1px solid ${C.line}` }}>
+          <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>
+            {selected === current.correct ? "CORRECT" : "NOT QUITE"}
+          </div>
+          <p style={{ fontSize: 14, lineHeight: 1.6, margin: "0 0 16px" }}>{current.why}</p>
+          <button onClick={advance} className="navbtn mono"
+            style={{ background: C.a, color: C.ink, border: "none", padding: "9px 18px", fontSize: 13, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>
+            {index + 1 === queue.length ? "SEE RESULTS →" : "NEXT QUESTION →"}
+          </button>
+        </div>
+      )}
     </Panel>
   );
 }
@@ -127,6 +224,7 @@ export default function GameSense() {
       </div>
 
       <ShuffleTip key={phase + side} pool={list} />
+      <ScenarioQuiz />
 
       <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
         {PHASES.map((p) => (

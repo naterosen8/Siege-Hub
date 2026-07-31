@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { C } from "../theme.js";
 import { Tag, CornerTicks } from "../components/ui.jsx";
 import { OPERATORS } from "../data/operators.js";
-import { tierOf } from "../data/meta.js";
+import { SCENARIOS } from "../data/meta.js";
 
 export default function Home() {
   const nav = useNavigate();
@@ -21,13 +21,13 @@ export default function Home() {
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
           <button onClick={() => nav("/operators")} className="navbtn mono" style={{ background: C.atk, color: C.ink, border: "none", padding: "12px 20px", fontSize: 14, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>BROWSE OPERATORS →</button>
           <button onClick={() => nav("/matchup")} className="navbtn mono" style={{ background: "transparent", color: C.paper, border: `1px solid ${C.line}`, padding: "12px 20px", fontSize: 14, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>RUN A MATCHUP</button>
-          <button onClick={() => nav("/tierlist")} className="navbtn mono" style={{ background: "transparent", color: C.paper, border: `1px solid ${C.line}`, padding: "12px 20px", fontSize: 14, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>META TIER LIST</button>
+          <button onClick={() => nav("/gamesense")} className="navbtn mono" style={{ background: "transparent", color: C.paper, border: `1px solid ${C.line}`, padding: "12px 20px", fontSize: 14, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>TEST YOUR GAME SENSE</button>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, maxWidth: 640 }}>
           {[
             ["ATTACKERS", OPERATORS.filter((o) => o.side === "atk").length, C.atk],
             ["DEFENDERS", OPERATORS.filter((o) => o.side === "def").length, C.def],
-            ["S-TIER PICKS", OPERATORS.filter((o) => tierOf(o.name) === "S").length, C.ok],
+            ["SCENARIOS", SCENARIOS.length, C.ok],
           ].map(([label, val, color]) => (
             <div key={label} style={{ border: `1px solid ${C.line}`, borderRadius: 4, padding: "14px 16px" }}>
               <div className="disp" style={{ fontSize: 30, color }}>{val}</div>
