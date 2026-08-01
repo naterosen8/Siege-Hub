@@ -389,6 +389,26 @@ export const OPERATORS = [
 
 export const ROLES = [...new Set(OPERATORS.map((o) => o.role))].sort();
 
+/** Broad browse categories each specific role folds into — INTEL / ANTI-GADGET / SUPPORT / FRONT LINE / MAP CONTROL / BREACH. */
+export const CATEGORIES = ["Intel", "Anti-Gadget", "Support", "Front Line", "Map Control", "Breach"];
+
+const ROLE_CATEGORY = {
+  "Anchor": "Map Control", "Anti-Breach": "Anti-Gadget", "Anti-Drone": "Anti-Gadget", "Anti-Entry": "Map Control",
+  "Anti-Flash": "Anti-Gadget", "Anti-Gadget": "Anti-Gadget", "Anti-Hard-Breach": "Anti-Gadget", "Anti-Projectile": "Anti-Gadget",
+  "Anti-Push": "Map Control", "Anti-Recon": "Intel", "Anti-Roam": "Map Control", "Anti-Rotate": "Map Control",
+  "Area Denial": "Map Control", "Bait / Denial": "Map Control", "Barrier": "Map Control", "Breach / Flex": "Breach",
+  "Cover / Control": "Front Line", "Crowd Control": "Front Line", "Decoy": "Intel", "Entry": "Front Line",
+  "Entry / Breach": "Front Line", "Entry / Utility": "Front Line", "Flash Vanguard": "Front Line", "Flex": "Support",
+  "Flush": "Front Line", "Fortification": "Map Control", "Hard Breach": "Breach", "Intel": "Intel",
+  "Intel / Decoy": "Intel", "Intel / Denial": "Intel", "Intel / Roamer": "Intel", "Long Range / Denial": "Map Control",
+  "Mobility": "Front Line", "Recon": "Intel", "Recon / Sniper": "Intel", "Roamer": "Map Control",
+  "Stealth": "Front Line", "Support": "Support", "Tracker": "Intel", "Tracker / Denial": "Intel",
+  "Trapper": "Map Control", "Utility / Denial": "Anti-Gadget", "Utility Denial": "Anti-Gadget", "Utility Hijack": "Anti-Gadget",
+  "Utility Removal": "Anti-Gadget", "Vanguard": "Front Line", "Vertical Entry": "Front Line",
+};
+
+export const categoryOf = (role) => ROLE_CATEGORY[role] || "Support";
+
 const nameRegex = (name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
 
 /** Operators explicitly named in op's own "counters" text — i.e. who documented-counters op. */

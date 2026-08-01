@@ -52,8 +52,8 @@ export default function SiegeHub() {
       <Routes>
         <Route path="/" element={<><Home /><GameSense /></>} />
         <Route path="/operators" element={<OperatorsHub />} />
-        <Route path="/operators/attack" element={<Operators />} />
-        <Route path="/operators/defense" element={<Operators />} />
+        <Route path="/operators/attack" element={<Operators side="atk" />} />
+        <Route path="/operators/defense" element={<Operators side="def" />} />
         <Route path="/operators/:name" element={<OperatorDetail />} />
         <Route path="/matchup" element={<Matchup />} />
         <Route path="/gamesense" element={<GameSense />} />
