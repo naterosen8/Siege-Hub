@@ -58,14 +58,25 @@ function shuffled(list) {
   return arr;
 }
 
+// Reorders a scenario's options randomly and remaps `correct` to match, so the
+// answer position can't be pattern-guessed across a playthrough.
+function shuffleOptions(s) {
+  const order = shuffled(s.options.map((_, i) => i));
+  return { ...s, options: order.map((i) => s.options[i]), correct: order.indexOf(s.correct) };
+}
+
+function freshQueue() {
+  return shuffled(SCENARIOS).map(shuffleOptions);
+}
+
 function ScenarioQuiz() {
-  const [queue, setQueue] = useState(() => shuffled(SCENARIOS));
+  const [queue, setQueue] = useState(freshQueue);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
 
   const restart = () => {
-    setQueue(shuffled(SCENARIOS));
+    setQueue(freshQueue());
     setIndex(0);
     setSelected(null);
     setScore(0);
