@@ -1,13 +1,70 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { C, tierColor } from "../theme.js";
 import { Tag, Pips, Panel } from "../components/ui.jsx";
 import { OPERATORS, whoCounters, whoOpCounters } from "../data/operators.js";
 import { tierOf } from "../data/meta.js";
+import { PRO_INTEL } from "../data/proIntel.js";
+
+function ProView({ op, side2, tier }) {
+  const pro = PRO_INTEL[op.name];
+  if (!pro) {
+    return (
+      <Panel style={{ marginTop: 18, padding: 30, borderColor: C.a }}>
+        <Tag tone="a">PRO INTEL</Tag>
+        <p style={{ color: C.mute, fontSize: 14, marginTop: 14, marginBottom: 0 }}>
+          Pro-level breakdown for {op.name} hasn't been written yet — this is rolling out operator by operator. Check back soon, or switch back to Learning mode above.
+        </p>
+      </Panel>
+    );
+  }
+
+  return (
+    <Panel style={{ marginTop: 18, padding: 30, borderColor: C.a }}>
+      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+        <Tag tone="a">PRO INTEL</Tag>
+        <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: tierColor(tier) }}>{tier}-TIER</span>
+      </div>
+      <h1 className="disp" style={{ fontSize: 38, margin: "14px 0 2px", textTransform: "uppercase", color: side2 }}>{op.name}</h1>
+      <p style={{ color: C.mute, fontSize: 14, margin: "0 0 26px" }}>Diamond-level breakdown — mechanics, sequencing, and the gap between good and great.</p>
+
+      <div style={{ marginBottom: 26 }}>
+        <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>MECHANICAL BREAKDOWN</div>
+        <p style={{ margin: 0, fontSize: 15, lineHeight: 1.7 }}>{pro.breakdown}</p>
+      </div>
+
+      <div style={{ marginBottom: 26 }}>
+        <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 10 }}>WHY THE COUNTERS WORK</div>
+        {op.counters.map((c, i) => (
+          <div key={i} style={{ marginBottom: i < op.counters.length - 1 ? 14 : 0 }}>
+            <div style={{ fontSize: 13.5, fontWeight: 600, marginBottom: 3 }}>{c}</div>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: C.paper }}>{pro.counterWhy?.[i]}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginBottom: 26 }}>
+        <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 10 }}>SEQUENCING</div>
+        {op.champion.map((c, i) => (
+          <div key={i} style={{ marginBottom: i < op.champion.length - 1 ? 14 : 0 }}>
+            <div style={{ fontSize: 13.5, fontWeight: 600, marginBottom: 3 }}>{c}</div>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: C.paper }}>{pro.sequencing?.[i]}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ borderTop: `1px solid ${C.line}`, paddingTop: 20 }}>
+        <Tag tone="s">THE RANK GAP</Tag>
+        <p style={{ margin: "12px 0 0", fontSize: 14.5, lineHeight: 1.7 }}>{pro.rankGap}</p>
+      </div>
+    </Panel>
+  );
+}
 
 export default function OperatorDetail() {
   const { name } = useParams();
   const nav = useNavigate();
+  const [mode, setMode] = useState("learning");
   const op = OPERATORS.find((o) => o.name === decodeURIComponent(name));
 
   const deniedBy = useMemo(() => (op ? whoCounters(op) : []), [op]);
@@ -34,6 +91,20 @@ export default function OperatorDetail() {
     <div className="fade-up" style={{ maxWidth: 900, margin: "0 auto", padding: "50px 24px 90px" }}>
       <Link to="/operators" className="mono navbtn" style={{ color: C.mute, fontSize: 12.5 }}>← ALL OPERATORS</Link>
 
+      <div style={{ display: "flex", gap: 8, marginTop: 20, marginBottom: -4 }}>
+        <button onClick={() => setMode("learning")} className="navbtn mono"
+          style={{ background: mode === "learning" ? C.panel2 : "transparent", border: `1px solid ${mode === "learning" ? C.mute : C.line}`, color: mode === "learning" ? C.paper : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 3, cursor: "pointer", fontWeight: mode === "learning" ? 600 : 400 }}>
+          LEARNING
+        </button>
+        <button onClick={() => setMode("pro")} className="navbtn mono"
+          style={{ background: mode === "pro" ? C.a : "transparent", border: `1px solid ${mode === "pro" ? C.a : C.line}`, color: mode === "pro" ? C.ink : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 3, cursor: "pointer", fontWeight: mode === "pro" ? 600 : 400 }}>
+          PRO INTEL
+        </button>
+      </div>
+
+      {mode === "pro" ? (
+        <ProView op={op} side2={side2} tier={tier} />
+      ) : (
       <Panel style={{ marginTop: 18, padding: 30 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 14 }}>
           <div>
@@ -77,6 +148,7 @@ export default function OperatorDetail() {
           </div>
         </div>
       </Panel>
+      )}
 
       {(deniedBy.length > 0 || denies.length > 0) && (
         <Panel style={{ marginTop: 16 }}>
