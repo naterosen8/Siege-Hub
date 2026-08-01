@@ -460,4 +460,461 @@ export const PRO_INTEL = {
     ],
     rankGap: "Lower-rank Solid Snake pings occasionally and acts on the read himself. Diamond-level Solid Snake uses the radar as a constant, cheap information source right before every room entry, and treats the data as team-wide intel to be communicated immediately rather than a personal advantage.",
   },
+
+  Smoke: {
+    breakdown: "The canisters are remote-detonated rather than proximity-triggered, which means Smoke chooses exactly when the gas activates rather than it going off automatically — he can hold a canister silent for the entire round and trigger it the instant it matters most, like right as a defuser starts. That remote control is also the tool's biggest weakness: there's no gadget that reaches out and disables a canister before it's triggered, only the general electronic vulnerability every gadget shares.",
+    counterWhy: [
+      "There genuinely isn't a reliable denial tool for this kit — an EMP thrown in the exact instant a canister is thrown could theoretically stop it before the throw completes, but that requires reacting to something that hasn't happened yet, which is a read, not a repeatable counter.",
+      "Because Smoke has to physically trigger a second canister and the detonation isn't instant on a downed player, a fast enough push to the plant can complete the defuse before he gets the chance to double-tap the gas.",
+    ],
+    sequencing: [
+      "Triggering gas directly on the plant rather than on entry forces attackers into a genuine dilemma — abandon the defuse and lose the round clock, or stay and take sustained damage — which is a much harder choice than gas that only denies an entry room.",
+      "Because the canisters are remote-detonated rather than single-use fixed traps, losing one to an EMP doesn't end the tool's usefulness for the round — repositioning a fresh canister after a clear keeps the area-denial threat alive instead of assuming it's over.",
+    ],
+    rankGap: "Lower-rank Smoke triggers gas the instant he sees movement near a canister. Diamond-level Smoke waits specifically for the plant to go down, understanding that the real value of the tool is forcing a choice between the bomb and survival, not just damaging an early push.",
+  },
+  Mute: {
+    breakdown: "Each jammer silently denies drones, breaching charges, and detonators within a fixed radius — the denial is passive and constant once placed, requiring no activation from Mute at all, which is what makes it reliable but also what makes it a pure static target once a defender's location is known. Its total blockage of remote signals is also exactly why physical destruction (gunfire, an explosive) is the only way to remove it, since there's no counter-signal or override.",
+    counterWhy: [
+      "Because the jammer has no armor or special durability, a shot fired from below through the floor reaches it exactly like it would reach any unprotected object — positioning has to account for vertical exposure, not just the room it's sitting in.",
+      "A frag grenade simply destroys the jammer outright with a single hit — the challenge for an attacker isn't the jammer's durability, it's physically getting a grenade or a drone close enough to it while it's actively jamming any drone trying to approach.",
+    ],
+    sequencing: [
+      "Drone entry points are the obvious jammer placement, but a wall the defense expects to be hard-breached is exactly the kind of surface a jammer denies most valuably — it stops the breach itself, not just a scouting tool.",
+      "Two jammers on one wall means a single EMP only clears one, and the second still fully denies drones and charges — forcing the attacking team to spend a second EMP (and a second cooldown) just to open the same wall Mute would otherwise be defending alone.",
+    ],
+    rankGap: "Lower-rank Mute jams the first door he sees out of habit. Diamond-level Mute treats jammer placement as a prediction of where the real breach will happen, and stacks redundant coverage on the walls that matter most instead of spreading single jammers thin across every entry point.",
+  },
+  Castle: {
+    breakdown: "The panel is a physical barricade with a defined durability — it's built to stop bullets and force attackers to spend a tool to open it, but it has no special resistance to any specific breaching method beyond raw durability. That means literally any tool capable of breaking soft cover — melee, shotgun rounds, launched grenades, generic breach charges — works on it identically; there's no unique 'Castle counter,' just the category of tools that beat barricades generally.",
+    counterWhy: [
+      "A hammer swing or a breach charge simply destroys the panel in one hit — the barricade doesn't distinguish between breach methods, it just has a durability threshold that any of these tools clears immediately.",
+      "Ash, Zofia, and Ram all have ranged tools that interact with soft cover from a distance, meaning none of them need to physically approach the panel to open it — the barricade's main value (forcing attackers to commit close) doesn't apply against any of the three.",
+    ],
+    sequencing: [
+      "Paneling rotation doors rather than just entry points means the barricade's real value — buying time mid-fight, not just before the plant — gets used continuously through the round instead of being spent once at setup.",
+      "Leaving at least one lane unpaneled keeps the defense from boxing itself in during a retake — the panel controls attacker access, but it controls defender access too, and a fully sealed site can trap the defense as much as it denies the attack.",
+    ],
+    rankGap: "Lower-rank Castle panels every opening he can reach at the start of the round and stops thinking about it. Diamond-level Castle treats paneling as an ongoing round-long decision — prioritizing rotation doors for mid-fight value and deliberately leaving controlled lanes open rather than sealing the site completely.",
+  },
+  Pulse: {
+    breakdown: "The sensor detects living targets through walls based on their heartbeat, which means it works regardless of whether the target is moving — unlike a motion-based scan, standing still doesn't defeat it. The tradeoff is that Pulse has to physically hold the scanner up and pointed to use it, which is a real animation that limits his ability to react to a sudden threat while he's mid-scan.",
+    counterWhy: [
+      "Because the Cardiac Sensor is itself an active electronic device, IQ's scanner reveals it the moment it's in use — which doesn't just deny the scan's value, it tells the attacking team roughly where Pulse is holding an angle from.",
+      "The scanning animation genuinely locks him into a vulnerable stance — an attacker who peeks while he's mid-scan is fighting a defender who hasn't had time to fully reset to a ready aim.",
+    ],
+    sequencing: [
+      "Scanning through a wall you expect the breach on turns a guess into a confirmed read — rather than sweeping randomly, aiming the scan at the specific surface under threat converts the tool from passive information into an active prediction check.",
+      "Using the scan to time a safe roam-out, not just for kills, treats the heartbeat detection as positional awareness — knowing exactly where attackers are lets Pulse relocate between them rather than only using the read offensively.",
+    ],
+    rankGap: "Lower-rank Pulse scans broadly and hopes to catch a heartbeat somewhere useful. Diamond-level Pulse aims scans at specific, predicted breach points and uses the read as much for safe repositioning as for combat information.",
+  },
+  Doc: {
+    breakdown: "The stim pistol heals and revives from range, which is what makes Doc's support valuable without requiring him to physically reach a downed teammate — but the shot itself still requires a clear line of sight and a moment of exposure to land, since it's an aimed projectile, not an area effect. That exposure window is the entire vulnerability of an otherwise very safe support tool.",
+    counterWhy: [
+      "Because the stim shot needs a direct line to the downed teammate, Doc still has to expose some part of himself to line up the shot across an open room — it's safer than a physical revive, but it isn't risk-free.",
+      "A downed target that gets finished before the stim shot lands is removed from the round regardless of Doc's healing capability — the tool only works on a target that's still alive when the shot connects.",
+    ],
+    sequencing: [
+      "Pre-healing a teammate holding a contested angle before they take damage extends their effective health in a fight that hasn't started yet — using the pistol reactively only after damage is taken wastes the preventative value entirely.",
+      "Positioning centrally so the pistol can reach either bombsite room maximizes the tool's actual utility — a Doc anchored in a corner far from both sites limits himself to supporting only whichever fight happens to be nearby.",
+    ],
+    rankGap: "Lower-rank Doc heals reactively after teammates are already hurt. Diamond-level Doc pre-heals proactively before contested engagements and positions specifically to keep both sites within stim range, treating support as continuous rather than emergency-only.",
+  },
+  Rook: {
+    breakdown: "The armor plates are a flat, one-time damage threshold increase for whoever grabs one — there's no active component, no animation risk, and no ongoing maintenance, which is why there's no gadget-level denial for it. The entire 'counter' to Rook is simply that raw armor only delays death by a small margin against a clean headshot, which bypasses armor thresholds entirely.",
+    counterWhy: [
+      "There's no interaction that removes plates once they're taken — Rook's kit isn't a device that can be jammed or destroyed, it's a one-time stat boost, which is why no gadget-based denial exists for it at all.",
+      "A headshot kills regardless of armor level in most engagements, since armor primarily raises the time-to-kill for body shots — a defender relying on the extra survivability from a plate still dies just as fast to a clean headshot as one without it.",
+    ],
+    sequencing: [
+      "Placing the pack somewhere central lets every teammate grab a plate on their way to position rather than requiring a detour — a pack tucked in an out-of-the-way corner effectively goes unused by anyone not already passing by it.",
+      "Rook himself benefits from taking a plate just as much as any other teammate — as an anchor who's likely to be in prolonged engagements, the survivability compounds specifically for the role he's already playing.",
+    ],
+    rankGap: "Lower-rank Rook drops the pack and forgets about it. Diamond-level Rook places it somewhere every teammate naturally passes early in the round, and makes sure to take a plate himself rather than treating the pack as purely a gift for others.",
+  },
+  Kapkan: {
+    breakdown: "The trap has a hidden trigger tied to doors and windows, and it's specifically designed to punish careless, fast movement through an entry point — a slow, deliberate vault gives a real chance to spot it before triggering, since the trap isn't invisible, just easy to miss when moving quickly. It also has no self-defense mechanism once spotted; it's a static, destructible device.",
+    counterWhy: [
+      "A drone triggering the trap from a safe distance removes the threat entirely without risking a player — the trap doesn't distinguish between a drone and a person crossing its trigger line.",
+      "Because the trap is a physical, static device once placed, Brava's hijack takes it over completely — the exact tool meant to punish attackers becomes something the attacking team can use instead, which is a much worse outcome for Kapkan than simply losing the trap.",
+    ],
+    sequencing: [
+      "Trapping a hard-breach wall instead of just doors catches attackers who assume a wall about to be destroyed doesn't need checking — the assumption that a breach wall is 'safe' from a trap is exactly what makes it valuable.",
+      "Placing traps on secondary entries rather than only the obvious main door targets the routes attackers are less likely to carefully check, since most of the attention during a breach naturally goes to the primary entry point.",
+    ],
+    rankGap: "Lower-rank Kapkan traps only the front door and expects a random pick. Diamond-level Kapkan spreads traps across hard-breach walls and secondary entries specifically because those are the surfaces attackers are least likely to slow down and check.",
+  },
+  Tachanka: {
+    breakdown: "The launcher fires a sustained barrage from a fixed, protected firing position rather than a single explosive burst — it saturates a room or lane over its firing duration, but that duration comes with a real windup delay and a limited total ammo count per activation. Because Tachanka has to stay in the fixed firing position to sustain the barrage, breaking line of sight to that position removes the threat completely rather than just reducing it.",
+    counterWhy: [
+      "Since the barrage only threatens whatever's actually in its line of fire, moving out of that sightline — rather than trying to push through it — removes the danger entirely without needing to interact with the launcher at all.",
+      "The firing delay and finite ammo mean the launcher isn't a limitless threat — baiting it into firing on a decoy or a minor push exhausts the ammo before the real, coordinated push arrives.",
+    ],
+    sequencing: [
+      "Saturating a hallway before the plant denies a rotate lane without needing a single kill — the barrage's real value against defenders is often area denial and forcing a longer route, not direct eliminations.",
+      "Firing reactively on a confirmed push lane rather than blind gets far more value per activation — the limited ammo means a barrage fired on a guess that misses is often wasted for the rest of the round.",
+    ],
+    rankGap: "Lower-rank Tachanka fires the barrage the moment he hears anything nearby. Diamond-level Tachanka holds fire for a confirmed push lane and treats the tool as a precision area-denial resource rather than a reactive panic button.",
+  },
+  "Jäger": {
+    breakdown: "Each ADS pod automatically intercepts incoming grenades and launched projectiles within its coverage — it's a passive, always-on defense once placed, which is what makes it valuable without requiring Jäger's active attention, but it also means every pod is a static, visible object with a fixed detection cone rather than an adaptive one.",
+    counterWhy: [
+      "Twitch's shock drone destroys a pod directly from a safe distance — since the pod has no ability to react to or intercept a drone's attack, a spotted pod is essentially defenseless against this specific threat.",
+      "Brava's hijack takes the pod rather than destroying it, which is a heavier loss than simple destruction — the exact tool built to intercept the attacking team's utility becomes something that can be repositioned or simply removed from play at the defense's expense.",
+    ],
+    sequencing: [
+      "Covering each pod's blind spots with another pod closes the gaps a single unit leaves — since each pod only protects its own detection cone, overlapping coverage denies angles that a lone pod would miss entirely.",
+      "Repositioning a pod once its location has been marked (by IQ or a drone) prevents attackers from simply avoiding its known coverage — a static pod that's been scouted loses its main advantage: catching a grenade the attacker didn't expect to be intercepted.",
+    ],
+    rankGap: "Lower-rank Jäger places pods once at round start and leaves them. Diamond-level Jäger treats pod placement as adaptive — covering blind spots deliberately and repositioning the moment a pod's location is compromised, rather than trusting a single static setup for the whole round.",
+  },
+  Bandit: {
+    breakdown: "The battery electrifies a reinforced wall continuously once placed, frying any hard-breach charge that arms on it and punishing anyone who touches the wall directly — it's a passive, always-on trick, not a one-time trigger, which is why re-tricking after an EMP clears it is a real, repeatable option as long as spare batteries remain.",
+    counterWhy: [
+      "Thatcher's EMP disables every battery within its blast radius simultaneously and instantly — there's no partial effect, a battery inside the radius is fully cleared the moment the EMP detonates.",
+      "Twitch's shock drone destroys a battery from range before the breach even needs to happen, denying the trick preemptively rather than contesting it during the breach attempt itself.",
+    ],
+    sequencing: [
+      "Tricking a wall you expect an EMP on last (not first) plays around the fact that Thatcher typically clears the first battery he spots — saving the trick for a less obvious wall increases the odds it survives long enough to matter.",
+      "Keeping a battery in reserve specifically to re-trick after an EMP lands means a single EMP doesn't permanently clear a wall — the defense retains the ability to punish a hard breach even after losing the first exchange.",
+    ],
+    rankGap: "Lower-rank Bandit tricks every wall he can reach immediately and uses every battery upfront. Diamond-level Bandit reads which walls Thatcher is likely to EMP first, deliberately tricks the less obvious ones, and holds batteries in reserve specifically to contest the second wave of a breach.",
+  },
+  Frost: {
+    breakdown: "The mat is a hidden floor trap tied specifically to careless, fast movement through windows or doorways — a slow, deliberate vault or crouch-through gives a real chance to spot it before triggering, since it's a physical object on the floor rather than an invisible effect. It has no self-defense once placed and no ability to relocate once someone is already looking for it.",
+    counterWhy: [
+      "Slow, deliberate movement through unclear entries gives a visual chance to spot the mat before triggering it — the trap punishes speed and carelessness specifically, not entry itself, so a cautious approach defeats it without needing any gadget.",
+      "Drones and cameras can spot a mat from a safe distance before a teammate physically commits to the entry point — once revealed, the mat provides no further threat since it's a static, visible object that can simply be avoided.",
+    ],
+    sequencing: [
+      "Placing mats on windows attackers vault through mid-fight (not just entry doors) catches a rotate attempt attackers assume is safe because they've already cleared that entry once — the threat isn't limited to the opening push.",
+      "Hiding a mat behind an already-open door exploits a real behavioral pattern — attackers stop checking doors they've already confirmed are open, which makes that space feel cleared when it isn't.",
+    ],
+    rankGap: "Lower-rank Frost places mats only at the obvious entry points and hopes for one early down. Diamond-level Frost anticipates mid-fight rotates and already-cleared spaces, placing mats where attackers have stopped being cautious rather than where they're already on alert.",
+  },
+  Valkyrie: {
+    breakdown: "Each camera provides a continuous live feed from wherever it's stuck, including surfaces reached only by a mid-air throw — that flexibility in placement is the camera's main strength, letting Valkyrie cover angles a fixed mount couldn't reach. Every camera is still a fully destructible, visible object with no self-defense once spotted, which is the hard limit on how much total map coverage she can maintain.",
+    counterWhy: [
+      "Brava's hijack takes a spotted camera rather than destroying it — the live feed that was helping the defense becomes usable by the attacking team instead, a heavier loss than simple destruction.",
+      "Twitch and IQ both find and remove cameras before a push, just through different methods — Twitch destroys them directly at range, while IQ reveals their exact position through walls so a team can avoid or clear their sightline.",
+    ],
+    sequencing: [
+      "Throwing cameras onto exterior walls before the round opens catches drone-in reads the moment attackers start scouting, giving the defense information about the opening approach before a single door is breached.",
+      "Sticking a camera facing a hard-breach wall means it survives the breach itself and keeps watching the hole afterward — a camera placed elsewhere in the room might get destroyed or lose its angle the moment the wall comes down.",
+    ],
+    rankGap: "Lower-rank Valkyrie throws cameras at whatever's convenient near her spawn. Diamond-level Valkyrie uses the mid-air throw's flexibility deliberately — placing exterior cameras for early reads and interior ones angled to survive a breach, rather than just covering nearby space.",
+  },
+  Caveira: {
+    breakdown: "Her kit is built around not being detected until she chooses to engage — silent footsteps and a suppressed pistol make normal movement and gunfire far less identifiable than for other operators, and the interrogation ability turns a single down into full team location intel. That intel decays fast and only works on a downed (not dead) attacker, which is the real time pressure behind the ability.",
+    counterWhy: [
+      "Deimos, Jackal, and Solid Snake all provide ways to actively locate a roaming defender before she can set up an ambush — since her kit relies on staying hidden until she strikes, any tool that reveals her position removes her core advantage before the engagement even happens.",
+      "Moving in pairs means there's no isolated, downed teammate left alone for her to interrogate — the ability requires a genuinely unaccompanied down, so simply not leaving anyone alone denies the tool's biggest payoff regardless of whether she gets the down.",
+    ],
+    sequencing: [
+      "Interrogating the first down immediately, even mid-fight, matters because the intel decays quickly — waiting for a 'safer' moment to interrogate often means the information is stale or the round has moved past where it would matter.",
+      "Roaming early and then repositioning toward the site once interrogation intel narrows the remaining attackers' location turns a roam kill into map-wide information — the value isn't just the pick, it's what the team learns from it afterward.",
+    ],
+    rankGap: "Lower-rank Caveira roams for a single pick and doesn't always interrogate afterward. Diamond-level Caveira treats the interrogation as more valuable than the kill itself — using the decaying intel window immediately and repositioning based on what it reveals rather than just moving on to the next duel.",
+  },
+  Echo: {
+    breakdown: "The drone flies and clings to ceilings, which gives it placement options a ground-based gadget doesn't have, and the sound burst disorients without dealing any direct damage — its value is entirely about denying a clean, calm entry rather than getting a kill. Because it's a physical flying object, it has a real health pool and is visible once spotted, same as any other drone-based gadget.",
+    counterWhy: [
+      "Brava's hijack takes the drone rather than destroying it — the tool meant to disorient the attacking team on entry becomes something they can use for their own reconnaissance instead.",
+      "IQ reveals the drone's exact ceiling position through walls before it ever gets the chance to fire its burst — a drone whose location is known in advance can be avoided or destroyed before it becomes relevant.",
+    ],
+    sequencing: [
+      "Sticking the drone to a ceiling above a breach point, not the open floor, means it survives longer (out of the immediate sightline of anyone entering) and specifically denies the exact spot attackers are about to occupy.",
+      "Using the burst to delay a plant, not just to stop an entry, extracts value from the disorientation at the moment it matters most — a burst spent early on a simple entry check trades away its use during the far more critical plant phase.",
+    ],
+    rankGap: "Lower-rank Echo places the drone on the first ceiling spot he finds and fires reactively. Diamond-level Echo places it specifically above breach points for durability and saves the burst for plant-phase disruption rather than spending it on an early, lower-value entry check.",
+  },
+  Mira: {
+    breakdown: "The Black Mirror is a one-way window by default — Mira sees out without being seen — but she can pop it to a fully clear pane on demand for an active firing angle, which is a distinct, audible action separate from just having the window placed. That means the mirror has two states with different risk profiles: passive intel while one-way, active exposure once popped.",
+    counterWhy: [
+      "A Twitch shock drone disables the window outright, removing both its one-way viewing and its firing-angle potential in a single action, since the window is an electronic gadget the same as any other.",
+      "Ash's breaching rounds break the window directly from range — rather than needing to push into the room the mirror covers, an attacker can deny it from a distance before ever entering the space it's watching.",
+    ],
+    sequencing: [
+      "Covering the room's main breach angle with the Mirror, rather than a wall attackers rarely open, ensures the passive intel and eventual firing angle are actually relevant to where the fight will happen.",
+      "Popping the pane only once a shot is actually lined up matters because the sound of popping gives away the exact position instantly — popping early for a look wastes the surprise the whole gadget depends on.",
+    ],
+    rankGap: "Lower-rank Mira pops the pane reactively whenever she sees movement. Diamond-level Mira uses the one-way state for patient information gathering and only pops the pane the instant a confirmed shot is available, treating the sound cue as a one-time resource rather than something to spend early.",
+  },
+  Lesion: {
+    breakdown: "The mines are small, hard-to-spot spike traps that poison on proximity rather than instant damage — the poison ticks over time, which gives an affected attacker a real window to be healed or to push through before it becomes lethal. Because the mines are stationary and rely on being missed rather than avoided, they're most effective spread across multiple routes rather than concentrated in one obvious hallway.",
+    counterWhy: [
+      "Brava's hijack takes a spotted mine rather than simply destroying it, converting a tool meant to slow the attacking team's advance into something available to them instead.",
+      "A Twitch shock drone can trigger or destroy mines from a safe distance once they're spotted, clearing the hazard without any player needing to risk walking near it.",
+    ],
+    sequencing: [
+      "Spreading mines across multiple rotate lanes instead of clustering them in one hallway means no single route is safe by default — an attacking team that clears one hallway hasn't necessarily cleared the others.",
+      "Using mine triggers as a roam-clock — reacting to which mine goes off and when — gives a passive, ongoing read on where attackers are moving without Lesion needing to be anywhere near the triggered mine himself.",
+    ],
+    rankGap: "Lower-rank Lesion clusters mines in one predictable hallway near the site. Diamond-level Lesion spreads them across multiple routes specifically to deny the assumption that any one path is safe, and uses each trigger as passive positional intel throughout the round.",
+  },
+  Ela: {
+    breakdown: "The mines trigger on proximity rather than a manual detonation, disorienting and briefly deafening anyone who moves too fast near them — the effect is tied to how quickly an attacker approaches, which is what makes a careful, slow approach a real (if imperfect) way to spot and avoid them before triggering.",
+    counterWhy: [
+      "Brava's hijack converts a spotted mine into something the attacking team controls instead of destroying it outright, denying Ela's kit its core disorientation tool for the rest of the round.",
+      "A Twitch shock drone can trigger or destroy a spotted mine safely from a distance, removing the hazard without a player needing to risk the proximity trigger themselves.",
+    ],
+    sequencing: [
+      "Placing mines on the doorway just past a common breach point, rather than on the wall itself, catches attackers who clear the hole but don't expect a second hazard immediately beyond it — the breach itself gets checked, what's past it usually doesn't.",
+      "Roaming aggressively early plays to her kit's actual strength — the mines and pistol reward picking a fight before the site is even breached, rather than waiting passively for a push that plays into a slower, more defensive style.",
+    ],
+    rankGap: "Lower-rank Ela places mines directly on the breach wall and plays passively otherwise. Diamond-level Ela places mines just past the expected breach point and uses the early roam window aggressively, since her kit is specifically built to punish the opening phase of a round, not the late one.",
+  },
+  Vigil: {
+    breakdown: "The cloak defeats detection specifically from drones, cameras, and scans — it's a gadget-vs-gadget tool, not an invisibility effect, which is why it does absolutely nothing against a defender being physically seen by a player. It also runs on a limited timer, meaning it's a resource to be spent deliberately rather than an always-available answer to being scouted.",
+    counterWhy: [
+      "Because the cloak specifically defeats scanning tools rather than physical detection, IQ's scanner still picks up the ERC-7 device itself as an active electronic gadget — a scan doesn't reveal Vigil directly, but it reveals that a cloaked defender is likely nearby, which is often enough information.",
+      "The cloak has zero effect on ordinary human vision — a defender relying on it to avoid a physical peek or a direct line of sight from an attacker gets no benefit at all, since the tool was never built to solve that problem.",
+    ],
+    sequencing: [
+      "Cloaking specifically when a drone is actively sweeping his position, rather than on a fixed timer, uses the limited duration exactly when it matters — activating early or on a schedule risks the window expiring before the actual threat arrives.",
+      "Using the cloak's window to reposition away from a spot about to be revealed by Dokkaebi or Jackal turns a purely defensive tool into an active repositioning one — the value isn't just staying hidden, it's using the hidden time to relocate somewhere safer.",
+    ],
+    rankGap: "Lower-rank Vigil activates the cloak reactively whenever he feels seen. Diamond-level Vigil times activation to specific, known threats — an active drone sweep, an incoming Dokkaebi or Jackal read — and uses the window to reposition, not just to wait it out in place.",
+  },
+  Maestro: {
+    breakdown: "The Evil Eye is a wall-mounted turret with real armor that absorbs small-arms fire until it eventually breaks — it's not instantly destructible, but it's also not invincible, and its laser is a genuine damage threat, not just a camera. Because it's fixed once placed, its entire survivability depends on positioning: an off-angle, low placement takes longer to identify and target than one sitting in an obvious doorway.",
+    counterWhy: [
+      "Brava's hijack takes the Evil Eye rather than simply breaking its armor — the turret that was threatening the attacking team becomes something they can use instead, which is a considerably worse outcome for Maestro than losing it to gunfire.",
+      "Ash and Zofia's rounds deal concentrated damage that breaks through the armor plate faster than standard sustained small-arms fire — the turret's durability is built around resisting steady gunfire, not concentrated explosive rounds.",
+    ],
+    sequencing: [
+      "Placing it low and off-angle rather than centered in a doorway means it isn't the obvious first target attackers instinctively shoot on entry — surviving that initial reaction extends how long it can actually gather intel or threaten damage.",
+      "Using the laser defensively on retake to deny a defuser, rather than only for early kills, gets value out of the tool at the moment defenders most need to stall the bomb — a laser spent early on a speculative kill isn't available for that critical later use.",
+    ],
+    rankGap: "Lower-rank Maestro places the Evil Eye centered in an obvious spot and uses the laser on the first target he sees. Diamond-level Maestro hides it off-angle for maximum survivability and saves the laser specifically for retake denial, when its value against a defuser is highest.",
+  },
+  Alibi: {
+    breakdown: "The Prisma decoys are static holograms that tag anyone who shoots them, revealing the shooter's position to the whole team — their entire value depends on an attacker mistaking them for a real player, which requires the decoy's placement and stillness to look plausible. They have no genuine reactive behavior, which is both what makes them cheap to deploy and what eventually gives them away to careful observation.",
+    counterWhy: [
+      "Since the decoys are entirely static, a moving target in the same space is confirmed to be a real player — attackers who watch for movement rather than shape alone distinguish decoys from threats without needing any gadget.",
+      "A decoy never reacts to nearby sound or light the way a real player instinctively would — checking for that lack of reaction (flinching, repositioning) is a reliable tell that costs nothing but attention.",
+    ],
+    sequencing: [
+      "Placing decoys in the exact spot a roamer would naturally stand, rather than an obvious corner, makes them far more convincing — attackers pattern-match against expected roamer positions, and a decoy that fits that pattern is harder to dismiss.",
+      "Using the tag as a rotate trigger — reacting the instant a decoy is shot — turns the reveal into actionable positional intel immediately, rather than just a passive 'gotcha' with no follow-up.",
+    ],
+    rankGap: "Lower-rank Alibi places decoys in convenient, obvious spots and doesn't always act on a tag. Diamond-level Alibi places them exactly where a real roamer would stand and reacts to a tag instantly, converting the reveal into a real positional advantage rather than a passive bonus.",
+  },
+  Clash: {
+    breakdown: "The shield is electrified and slows/damages anything in front of her while she advances, and it's specifically immune to most flashes — but that immunity and the shield's damage are both purely frontal, tied to whatever she's currently facing while advancing. She has no coverage against anything approaching from outside that frontal arc, including tools that don't require a direct duel at all.",
+    counterWhy: [
+      "Zofia and Capitão both have launcher-based tools that hit from range rather than requiring a direct frontal duel — since the shield's protection is built around close-range frontal engagement, a launched round from outside that range bypasses what the shield is actually built to stop.",
+      "Flanking her exploits the same fundamental limitation every frontal shield has — the shield covers where she's facing, and nothing else, so an angle outside that coverage faces an entirely unprotected target.",
+    ],
+    sequencing: [
+      "Using her to hold a hallway chokepoint solo frees the rest of the team to stack elsewhere — since she's specifically built to control a single frontal lane by herself, committing other defenders to the same chokepoint wastes their positioning.",
+      "Advancing slowly into a stalled push, rather than holding stationary, gets more value from the shock effect over time — a static Clash blocks a lane, but an advancing one actively pressures attackers who thought they had space to work with.",
+    ],
+    rankGap: "Lower-rank Clash holds a doorway passively and waits for attackers to walk into the shield. Diamond-level Clash uses her solo lane control to free up teammates elsewhere and advances into stalled pushes actively, rather than treating the shield as a purely static roadblock.",
+  },
+  Kaid: {
+    breakdown: "The Electroclaw electrifies both reinforced walls and other defender gadgets, functioning like a second source of Bandit's trick — it's a continuous, passive effect once placed, frying breach charges the same way a battery does. Because it works on gadgets as well as walls, it has applications beyond simple wall denial that a battery alone doesn't.",
+    counterWhy: [
+      "A Twitch shock drone destroys an Electroclaw from a safe range before it needs to be contested during an actual breach attempt — the drone doesn't need to interact with the wall itself, just the claw.",
+      "Thatcher's EMP clears an Electroclaw exactly the way it clears a Bandit battery — the two devices function identically against an EMP's blast radius, so a wall trick from either operator faces the same denial.",
+    ],
+    sequencing: [
+      "Clawing a hatch as often as a wall matters because hatch hard-breaches get denied far less often in general play — attackers commonly account for wall tricks but forget hatches can be electrified the same way.",
+      "Electrifying Castle panels in addition to reinforced walls extends the claw's denial to a tool it isn't normally associated with — it specifically punishes a Sledge hammer swing on a panel the same way it punishes a hard breach on a wall.",
+    ],
+    rankGap: "Lower-rank Kaid claws only obvious reinforced walls near the site. Diamond-level Kaid extends coverage to hatches and Castle panels specifically because those are the surfaces attackers assume are safe from an electrical trick.",
+  },
+  Mozzie: {
+    breakdown: "The Pest devices passively hijack any attacker drone that rolls near them, giving Mozzie a live feed and movement control over the captured drone — the hijack is automatic on proximity, requiring no active input once the Pest is placed, which is what makes it valuable as a set-and-forget denial tool. Its blind spot is entirely about visibility: a Pest that's spotted before a drone gets close never gets the chance to trigger.",
+    counterWhy: [
+      "A Twitch shock drone can destroy a Pest device outright, but only if it's spotted before an attacker's own drone rolls into its hijack range — the denial is a race between noticing the Pest and triggering it accidentally.",
+      "Once a drone is hijacked, it's gone for the round — there's no recovery method, which is why the practical response is accepting the loss and not spending additional drones trying to chase down what's already been taken.",
+    ],
+    sequencing: [
+      "Placing Pests near common drone-under-door entry points, rather than out in the open, keeps them from being spotted and destroyed before they ever get the chance to hijack anything.",
+      "Using a hijacked drone actively to scout the attack, not just to deny it, converts a purely defensive gadget into a live intelligence source — the feed itself is valuable information the defense wouldn't otherwise have.",
+    ],
+    rankGap: "Lower-rank Mozzie places Pests in open, easily spotted areas and treats hijacking as the end goal. Diamond-level Mozzie hides them specifically at common drone entry points and actively uses every hijacked feed as ongoing scouting rather than a one-time denial.",
+  },
+  Warden: {
+    breakdown: "The glasses see through smoke and fully negate flashbang effects while active, which lets Warden hold an angle through a blind push that would disorient anyone else — but the negation only lasts for a limited number of uses per life, and it does nothing to make him less visible or harder to hit while it's active.",
+    counterWhy: [
+      "Because the glasses have a limited charge count, baiting them out with a cheap, low-value flash early in an engagement can exhaust the negation before the real, decisive push arrives.",
+      "The glasses only negate the flash's disorientation — Warden remains fully visible and exposed the entire time they're active, so the counter to using them isn't a gadget, it's simply out-dueling him in the gunfight the flash was supposed to prevent.",
+    ],
+    sequencing: [
+      "Holding the exact angle a Ying or Blitz push is most likely to come from, and treating the glasses as insurance rather than a crutch, means the negation is a safety net for a good read — not a substitute for making one.",
+      "Saving charges specifically for the retake, when flash negation matters more once the bomb's already down, prioritizes the phase of the round where holding an angle through a blind push has the highest stakes.",
+    ],
+    rankGap: "Lower-rank Warden burns glasses charges on any flash he sees, early and often. Diamond-level Warden treats the limited charges as a round-long resource, holding them for genuinely threatening pushes and specifically for the higher-stakes retake phase.",
+  },
+  Goyo: {
+    breakdown: "The Volcán Shield is a deployable shield with a hidden property: it explodes into fire when shot or destroyed, which punishes attackers who either breach directly through it or use it for cover assuming it behaves like a normal shield. Its threat is entirely conditional on someone interacting with it aggressively — a shield left alone, or destroyed from a safe distance, never triggers the fire at all.",
+    counterWhy: [
+      "A Twitch shock drone can destroy the shield from a safe distance, triggering the explosive fire property without any player being anywhere near it when it detonates.",
+      "Since the fire specifically triggers when the shield is shot or destroyed at close range, or used for cover, simply avoiding treating it as cover and clearing it from range sidesteps the punish entirely.",
+    ],
+    sequencing: [
+      "Placing shields on the exact breach hole attackers will shoot through for cover, rather than as decoration nearby, ensures the fire punish actually lands on someone rather than triggering in empty space.",
+      "Stacking two shields on one entry point means clearing both takes real time — time the defense can use elsewhere, since destroying one shield still leaves a second explosive surprise for whoever pushes through next.",
+    ],
+    rankGap: "Lower-rank Goyo places shields loosely around a room as generic cover. Diamond-level Goyo places them specifically where attackers are likely to shoot for cover or push through a breach, and stacks them at single entry points to punish anyone clearing the first one too quickly.",
+  },
+  Wamai: {
+    breakdown: "The Mag-NET units pull in and detonate thrown grenades and launched projectiles before they reach their intended target, functioning as an area-based interception tool rather than a targeted one — but the pull only affects a defined cone or radius, meaning a projectile thrown from outside that coverage entirely avoids the effect.",
+    counterWhy: [
+      "A Twitch shock drone can destroy a spotted Mag-NET unit before an attacker commits key utility near it — removing the interception threat preemptively rather than testing whether a throw will get pulled in.",
+      "Because the unit's pull only covers a defined cone, grenades thrown from odd angles outside that coverage bypass the interception entirely — the unit isn't omnidirectional, so approach angle matters as much as distance.",
+    ],
+    sequencing: [
+      "Placing units to protect the plant room specifically, not just entry doorways, denies the exact grenade spam attackers rely on to pressure a defuser during the most vulnerable part of the round.",
+      "Covering both a grenade lane and a breach lane with a single well-placed unit at a room's corner gets double coverage out of one placement, rather than needing two separate units to cover both threats.",
+    ],
+    rankGap: "Lower-rank Wamai places units only at obvious entry doorways. Diamond-level Wamai prioritizes plant-room coverage and finds corner placements that cover multiple threat lanes at once, getting more defensive value out of a limited number of units.",
+  },
+  Oryx: {
+    breakdown: "The dash lets Oryx body-slam through soft walls and hatches with a brief speed boost that also cancels most concussion and blind effects — it's a mobility and repositioning tool disguised as an entry tool, and the speed boost during the dash is what creates both his biggest strength (unexpected angles) and his biggest weakness (a predictable, committed animation while it's happening).",
+    counterWhy: [
+      "Because the dash lets him move through soft walls and hatches instantly, treating those surfaces as viable entry points — not just doors — is the actual mental adjustment needed to defend against him; expecting him only through conventional entries misses half his kit's potential.",
+      "The dash itself is a fixed, readable animation — he's exposed and predictable for its duration, and a defender who recognizes the dash starting can often punish the moment he commits to it before he reaches full speed or cover.",
+    ],
+    sequencing: [
+      "Using the dash to relocate mid-fight when a position gets read, not just for surprise entries, treats it as an escape and repositioning tool as much as an offensive one — the concussion/blind cancellation especially matters when disengaging from a bad read.",
+      "Dashing through a hatch to counter-roam behind an attacker push that's already committed to the site catches attackers who've stopped watching their back the moment they think the entry phase is over.",
+    ],
+    rankGap: "Lower-rank Oryx uses the dash purely as a surprise entry tool and rarely as a defensive escape. Diamond-level Oryx treats it as equally valuable for relocating out of a read position and for counter-roaming behind an already-committed push, not just for breaking in somewhere unexpected.",
+  },
+  Melusi: {
+    breakdown: "The Banshee devices slow and damage anyone who lingers near them, which specifically punishes a slow, methodical clear rather than a fast one — the effect requires proximity and time, so a quick pass-through takes less total punishment than a cautious room-clear would. That design is exactly why the devices work best in the exact hallways where attackers naturally move carefully.",
+    counterWhy: [
+      "Brava's hijack takes a Banshee rather than simply breaking it, converting a slow-and-damage zone the attacking team was avoiding into a device that could theoretically be repurposed instead.",
+      "Ash, Zofia, or a thrown grenade can all break a Banshee from a safe angle before pushing past it — since the device has no way to defend itself once spotted, any of these tools removes it before its slow effect ever applies.",
+    ],
+    sequencing: [
+      "Placing Banshees on rotate hallways, not just the site door, slows a roam-clear as effectively as it slows an entry — attackers hunting a roamer through a corridor take the same proximity punishment as attackers pushing the site directly.",
+      "Using them to zone a retake room during the plant lets defenders reposition more safely — the slow-and-damage effect covers ground the defense doesn't have to physically watch themselves.",
+    ],
+    rankGap: "Lower-rank Melusi places Banshees only at the obvious site entrance. Diamond-level Melusi uses them on rotate and roam-clear hallways as well, and leans on them specifically during the plant phase to cover ground the defense can't watch directly.",
+  },
+  Aruni: {
+    breakdown: "The Surya Gate blocks bullets and utility while Aruni is near it, and can zap gadgets thrown through it — its defensive property is directly tied to her presence, meaning the barrier isn't a permanent structure, it's an extension of her that drops the instant she's displaced or killed. That dependency is the entire basis for how it's countered.",
+    counterWhy: [
+      "Brava's hijack takes control of the gate itself rather than needing to displace Aruni to remove it — a more complete denial than the standard approach of forcing her away from the barrier's activation range.",
+      "Since the gate only blocks the exact angle it's covering, going around it rather than contesting that angle directly avoids the barrier's effect entirely without needing to fight through it at all.",
+    ],
+    sequencing: [
+      "Deploying the gate to seal a breach hole mid-fight buys a rotate that wasn't available a second earlier — the barrier's real-time deployment makes it useful reactively, not just as a pre-planned setup piece.",
+      "Using it during the plant to block a direct retake lane gives the defense a window to reposition safely — the barrier doesn't need to hold forever, just long enough for a repositioning window to open.",
+    ],
+    rankGap: "Lower-rank Aruni deploys the gate early and statically, then mostly ignores it. Diamond-level Aruni uses it reactively — sealing breach holes and retake lanes in real time as the fight develops, rather than treating it as a one-time setup decision.",
+  },
+  Thunderbird: {
+    breakdown: "The Kóna Stations pulse healing to any teammate standing near them, which lets a hurt anchor top off without fully rotating out of position — the healing requires standing still near the station, which is a real limitation mid-firefight, but it's a powerful tool for sustaining a hold between engagements rather than during one.",
+    counterWhy: [
+      "Brava's hijack takes a spotted station rather than simply destroying it, converting a healing resource the defense was relying on into something the attacking team could theoretically use instead.",
+      "A Twitch shock drone can destroy a station once it's been spotted, denying the healing zone entirely before a defender gets the chance to use it between engagements.",
+    ],
+    sequencing: [
+      "Placing a station in the anchor's actual hold spot, not a random corner, ensures it's usable in the middle of an ongoing hold — a station tucked away from where the real fighting happens goes unused when it matters most.",
+      "Using the heal window to re-engage a duel that would otherwise require disengaging entirely lets a defender stay in a fight longer than their raw health would normally allow, extracting more value from a single hold position.",
+    ],
+    rankGap: "Lower-rank Thunderbird places stations in a safe back room, disconnected from where fights actually happen. Diamond-level Thunderbird places them directly in the anchor's real hold spot, treating the heal as a tool to extend an active engagement rather than a between-round convenience.",
+  },
+  Thorn: {
+    breakdown: "The Razorbloom trap beeps a clear warning before detonating, which is a deliberate tradeoff — it gives attackers a real chance to destroy it in time, but that same beep also functions as bait, since attackers who fixate on destroying it in the open expose themselves to a trade while doing so.",
+    counterWhy: [
+      "Brava's hijack converts the trap during its beep window into something the attacking team controls, rather than needing to destroy it under time pressure — a heavier denial than simply shooting it in time.",
+      "A Twitch shock drone can trigger or destroy the trap safely from a distance, resolving the beep-window threat without any player needing to risk exposure to do it.",
+    ],
+    sequencing: [
+      "Placing it just past a breach hole, not on the wall itself, catches the second attacker through rather than the first — the initial breach gets checked carefully, but what's immediately beyond it often doesn't.",
+      "Using the beep as bait relies on attacker psychology — a player fixated on destroying the trap before it detonates is often not watching their surroundings, which is exactly the moment a defender can punish them.",
+    ],
+    rankGap: "Lower-rank Thorn places traps directly on breach walls where they're expected and get destroyed immediately. Diamond-level Thorn places them just past the breach point and treats the beep window itself as a distraction tool, punishing attackers who fixate on the trap instead of the room.",
+  },
+  Azami: {
+    breakdown: "The Kiba Barrier solidifies instantly over a hole or window, re-denying an opening that's already been breached — it's a reactive re-fortification tool rather than a preventative one, which means its value is entirely about undoing an attacker's progress after the fact, not stopping the initial breach.",
+    counterWhy: [
+      "Ash or Zofia's rounds break a barrier down faster than standard sustained fire — the barrier has a durability threshold like Castle's panel, and concentrated explosive damage clears it quicker than ordinary gunfire would.",
+      "Flores can send a drone through an already-open hole before it's resealed, then destroy the barrier from the other side — approaching the denial from the interior rather than trying to break through it from the attacking side.",
+    ],
+    sequencing: [
+      "Resealing a Thermite hole immediately after the charge pops, before attackers can push through it, denies the entire point of the breach — the wall opened, but the opening never actually becomes usable.",
+      "Carrying barriers into a retake to re-deny a hole attackers already used for the plant forces them to breach the same spot twice, spending utility they may not have in reserve for a second attempt.",
+    ],
+    rankGap: "Lower-rank Azami reseals holes whenever she happens to notice them open. Diamond-level Azami times the reseal to the instant a breach completes and carries barriers specifically into retakes, treating re-fortification as a round-long resource rather than a one-time reaction.",
+  },
+  Solis: {
+    breakdown: "The sensor pulses to reveal every active electronic gadget and pings any attacker caught in an active gadget's effect through walls — it's a burst-activated tool with a real cooldown between pulses, not a continuous scan, which means its value depends heavily on timing the pulse to when relevant gadgets are actually active.",
+    counterWhy: [
+      "Because the sensor itself is an active electronic device while pulsing, IQ can spot its signature the same way she'd spot any other gadget — the tool that reveals attacker electronics is, itself, detectable by the same category of scan.",
+      "Non-electronic attacker tools generate no signal for the sensor to pick up at all — an attacker relying purely on non-electronic gadgets is functionally invisible to this specific tool regardless of when Solis pulses.",
+    ],
+    sequencing: [
+      "Pulsing right after hearing a drone or gadget deploy, rather than on a blind timer, confirms the exact room a piece of electronic utility is active in — timing the pulse to a specific sound cue turns a broad scan into a precise read.",
+      "Relaying gadget locations to teammates immediately matters because the intel is only valuable if it's acted on fast — a confirmed gadget location that sits uncommunicated for too long loses its relevance as the round state changes.",
+    ],
+    rankGap: "Lower-rank Solis pulses on a rough timer regardless of what's happening around her. Diamond-level Solis times pulses to specific audio cues of gadget deployment and treats immediate communication of the read as part of the tool's actual value, not an afterthought.",
+  },
+  Fenrir: {
+    breakdown: "The Dread Mines trigger a fear effect that blurs vision, forcing attackers to disengage or push blind rather than dealing heavy direct damage — the effect is about denying clear information and confident movement, not about getting a kill outright, which is why 'push through it' is a genuinely viable response for a team willing to accept degraded vision.",
+    counterWhy: [
+      "Brava's hijack converts a spotted mine into something the attacking team could use, rather than simply removing the threat by destroying it.",
+      "A Twitch shock drone can trigger or destroy the mines on sight before they're triggered, clearing the hazard without any player needing to risk walking into the fear effect.",
+    ],
+    sequencing: [
+      "Triggering mines on the plant forces attackers into a genuine choice between the bomb and clearing their vision — a much harder decision than a fear effect used purely on an entry push with no time pressure attached.",
+      "Placing mines on rotate lanes specifically blinds a flanking roamer's read on the defending team's position — the fear effect denies exactly the clear vision a roamer needs to make an informed push.",
+    ],
+    rankGap: "Lower-rank Fenrir triggers mines on the first attacker he sees near an entry point. Diamond-level Fenrir saves them specifically for the plant phase and rotate lanes, where the fear effect creates the hardest possible decision for the attacking team rather than a minor early-round inconvenience.",
+  },
+  "Tubarão": {
+    breakdown: "The Zoto Canister ices over a reinforced hatch and nearby attackers, slowing hard breaches on that specific hatch while also revealing footsteps on the floor below — it's a dual-purpose tool combining hard-breach denial with a passive intel feed, but the icing effect takes real time to complete, which is the window every counter to it exploits.",
+    counterWhy: [
+      "A Twitch shock drone can destroy a canister before it finishes icing the hatch over, denying the slow effect before it fully takes hold rather than needing to fight through it once complete.",
+      "Since the icing takes time and only affects the specific hatch it's applied to, breaching a wall instead of waiting out the iced hatch sidesteps the denial entirely if the timing doesn't favor a delay.",
+    ],
+    sequencing: [
+      "Icing a hatch that's a known rotate or breach point, rather than a random one, maximizes the slow's actual impact — the effect matters far more on a hatch attackers are actually planning to use than on one that would go untouched anyway.",
+      "Using the footstep reveal on the floor below as a passive, ongoing roam-read throughout the round extracts continuous value from the canister beyond its one-time hard-breach denial.",
+    ],
+    rankGap: "Lower-rank Tubarão ices whichever hatch is nearest without much thought. Diamond-level Tubarão targets known rotate and breach points specifically, and treats the footstep-reveal side effect as a passive intel source worth checking throughout the round, not just a bonus.",
+  },
+  Denari: {
+    breakdown: "The T.R.I.P. Connector network links deployable units into a laser tripwire grid across a room, damaging and revealing anyone who crosses a beam — the network's coverage is entirely defined by where the individual units are placed and connected, which means its effectiveness depends on covering the routes attackers are actually likely to use, not just any available space.",
+    counterWhy: [
+      "Brava's hijack takes a connector unit rather than simply destroying it, converting part of the tripwire network into something the attacking team could repurpose instead of removing it outright.",
+      "A Twitch shock drone or a thrown grenade can destroy connector units to collapse the network before pushing — removing even one unit can break the beam continuity across the whole setup, not just at that single point.",
+    ],
+    sequencing: [
+      "Building the network across multiple entry points in the same room, instead of a single lane, denies attackers the option of simply finding the one unwatched route into that space.",
+      "Using the network as an early-warning trip line on a flank route, not only the main site door, extends its value beyond direct site denial into general positional awareness for the whole defense.",
+    ],
+    rankGap: "Lower-rank Denari builds a single tripwire line across the most obvious entrance. Diamond-level Denari covers multiple entry points within a room and extends the network onto flank routes, treating it as an early-warning system for the whole map, not just a site-door tripwire.",
+  },
+  "Skopós": {
+    breakdown: "Splitting control between two remote shells — one active and armed, one passive with a shield and camera — gives Skopós the ability to reposition and gather intel from two locations without physically moving her own body between them, but destroying either shell has real consequences: the passive one loses her a camera and cover, while the active one removes her offensive capability at that location.",
+    counterWhy: [
+      "Dokkaebi or Deimos can both track her position between shell swaps — since she's still a physical player controlling the shells remotely, tools that reveal a defender's location work on her exactly as they would on anyone else during the moments she's not shielded by a shell's cover.",
+      "Destroying the passive shell removes half her kit even though she personally survives — the loss isn't fatal, but it's a real reduction in her map presence and intel-gathering capability for the rest of the round.",
+    ],
+    sequencing: [
+      "Leaving the passive shell watching a flank while actively holding the site with the other covers two locations simultaneously — a single defender providing genuine dual-location presence without needing a teammate to cover the second spot.",
+      "Swapping shells to reposition mid-fight, without the movement time a normal rotate would cost, lets her respond to a developing situation on the far side of the map instantly rather than physically running there.",
+    ],
+    rankGap: "Lower-rank Skopós uses one shell actively and mostly forgets about the passive one. Diamond-level Skopós treats both shells as simultaneously valuable — actively defending one location while the passive shell provides real flank coverage, and swaps between them as a genuine repositioning tool rather than a novelty.",
+  },
+  Sentry: {
+    breakdown: "The Gadget Kit trades a unique primary ability for the ability to pick any two defender secondary gadgets, with no duplicates — this makes Sentry uniquely flexible in what he brings to a comp, but it also means his total deployable utility is capped at two items rather than the deeper pool a specialist typically carries of their unique gadget.",
+    counterWhy: [
+      "Since there's no unique primary gadget to specifically deny, the practical response is scouting which two secondaries were actually picked and adjusting to those specific tools rather than expecting a standard kit.",
+      "Because the total kit is only two gadgets, denying both early removes his entire utility contribution for the round — a specialist with a deeper pool of one gadget type retains some value even after losing a few units, but Sentry doesn't have that redundancy.",
+    ],
+    sequencing: [
+      "Picking two secondaries that plug a specific gap in the team's composition, rather than doubling up on a type the team already covers, gets the most value out of the flexibility the kit is actually built around.",
+      "Leaning on positioning and aim over gadget play makes sense given the kit's design — the value proposition here is a custom loadout filling comp gaps, not a unique deny tool, so treating him as a pure gadget specialist misreads what he's for.",
+    ],
+    rankGap: "Lower-rank Sentry picks two secondaries arbitrarily or duplicates what teammates already bring. Diamond-level Sentry treats the loadout choice itself as the main skill expression — reading the team comp's actual gaps before the round even starts and filling exactly those, rather than defaulting to a generic pair.",
+  },
 };
