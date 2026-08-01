@@ -404,7 +404,7 @@ const ROLE_CATEGORY = {
 
 export const categoryOf = (role) => ROLE_CATEGORY[role] || "Support";
 
-const nameRegex = (name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+export const nameRegex = (name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
 
 /** Operators explicitly named in op's own "counters" text — i.e. who documented-counters op. */
 export const whoCounters = (op) => {

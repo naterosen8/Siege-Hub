@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { C } from "../theme.js";
 import { Tag, SectionLabel, Panel } from "../components/ui.jsx";
-import { OPERATORS } from "../data/operators.js";
+import { OPERATORS, nameRegex } from "../data/operators.js";
 
 export default function Matchup() {
   const attackers = OPERATORS.filter((o) => o.side === "atk");
@@ -12,10 +12,10 @@ export default function Matchup() {
   const atk = OPERATORS.find((o) => o.name === a);
   const def = OPERATORS.find((o) => o.name === d);
 
-  const atkBeatsDef = atk.counters.filter((c) => c.toLowerCase().includes(def.name.toLowerCase()));
-  const defBeatsAtk = def.counters.filter((c) => c.toLowerCase().includes(atk.name.toLowerCase()));
-  const atkChampBeatsDef = atk.champion.filter((c) => c.toLowerCase().includes(def.name.toLowerCase()));
-  const defChampBeatsAtk = def.champion.filter((c) => c.toLowerCase().includes(atk.name.toLowerCase()));
+  const atkBeatsDef = atk.counters.filter((c) => nameRegex(def.name).test(c));
+  const defBeatsAtk = def.counters.filter((c) => nameRegex(atk.name).test(c));
+  const atkChampBeatsDef = atk.champion.filter((c) => nameRegex(def.name).test(c));
+  const defChampBeatsAtk = def.champion.filter((c) => nameRegex(atk.name).test(c));
 
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", padding: "70px 24px" }}>
