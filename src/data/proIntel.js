@@ -448,19 +448,6 @@ export const PRO_INTEL = {
     ],
     rankGap: "Lower-rank Deimos marks a target and tries to solo hunt them down. Diamond-level Deimos treats the mark purely as team information — calling exact positions immediately and timing the mark to align with a coordinated push, rather than chasing the tracked player alone.",
   },
-  "Solid Snake": {
-    breakdown: "The radar sweeps a wide radius and reveals nearby positions without requiring a physical drone or camera to be deployed first, which makes it uniquely fast intel compared to every other recon tool in the game — there's no setup, no exposure, no waiting for a device to reach its target. Its tradeoff is that it's a pure electronic emission, which makes it fully subject to the same jamming and cloaking rules every other electronic gadget follows.",
-    counterWhy: [
-      "Because the radar functions as an electronic emission with a defined radius, a jammer blocks it from pinging anything within that radius the same way it blocks any other electronic signal — a defender inside jammer coverage is invisible to the sweep entirely.",
-      "Vigil's cloak specifically defeats scanning and tracking effects, and the radar sweep falls squarely into that category — a cloaked defender generates no ping regardless of how close they are to Solid Snake when he activates it.",
-    ],
-    sequencing: [
-      "Using the radar immediately before entering a room confirms it's clear without spending a drone charge — it's the fastest possible intel check available to any attacker, which makes it valuable specifically at the moment of commitment rather than earlier in the round.",
-      "Since the ping data is instant and map-relevant, relaying it to the team's push order gets more value than acting on it alone — a solo read only helps Solid Snake, but a shared read can reshape the whole team's approach.",
-    ],
-    rankGap: "Lower-rank Solid Snake pings occasionally and acts on the read himself. Diamond-level Solid Snake uses the radar as a constant, cheap information source right before every room entry, and treats the data as team-wide intel to be communicated immediately rather than a personal advantage.",
-  },
-
   Smoke: {
     breakdown: "The canisters are remote-detonated rather than proximity-triggered, which means Smoke chooses exactly when the gas activates rather than it going off automatically — he can hold a canister silent for the entire round and trigger it the instant it matters most, like right as a defuser starts. That remote control is also the tool's biggest weakness: there's no gadget that reaches out and disables a canister before it's triggered, only the general electronic vulnerability every gadget shares.",
     counterWhy: [
@@ -608,7 +595,7 @@ export const PRO_INTEL = {
   Caveira: {
     breakdown: "Her kit is built around not being detected until she chooses to engage — silent footsteps and a suppressed pistol make normal movement and gunfire far less identifiable than for other operators, and the interrogation ability turns a single down into full team location intel. That intel decays fast and only works on a downed (not dead) attacker, which is the real time pressure behind the ability.",
     counterWhy: [
-      "Deimos, Jackal, and Solid Snake all provide ways to actively locate a roaming defender before she can set up an ambush — since her kit relies on staying hidden until she strikes, any tool that reveals her position removes her core advantage before the engagement even happens.",
+      "Deimos and Jackal both provide ways to actively locate a roaming defender before she can set up an ambush — since her kit relies on staying hidden until she strikes, any tool that reveals her position removes her core advantage before the engagement even happens.",
       "Moving in pairs means there's no isolated, downed teammate left alone for her to interrogate — the ability requires a genuinely unaccompanied down, so simply not leaving anyone alone denies the tool's biggest payoff regardless of whether she gets the down.",
     ],
     sequencing: [

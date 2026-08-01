@@ -101,7 +101,7 @@ export const SCENARIOS = [
 /* S/A/B/C tiers — general competitive relevance snapshot, shown as a small badge on operator cards/detail pages. */
 export const TIER_MAP = {
   // S
-  Nomad: "S", Thatcher: "S", Ace: "S", "Solid Snake": "S", Smoke: "S", Mira: "S", Azami: "S",
+  Nomad: "S", Thatcher: "S", Ace: "S", Smoke: "S", Mira: "S", Azami: "S",
   // A
   Sledge: "A", Ash: "A", Zofia: "A", Iana: "A", Jackal: "A", Twitch: "A", Osa: "A", Grim: "A", Ram: "A", Dokkaebi: "A",
   Bandit: "A", Jäger: "A", Melusi: "A", Wamai: "A", Goyo: "A", Oryx: "A", Thorn: "A", Solis: "A", Kaid: "A", Maestro: "A",

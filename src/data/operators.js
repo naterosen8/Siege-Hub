@@ -188,11 +188,6 @@ export const OPERATORS = [
     difficulty: "Hard",
     counters: ["Vigil's cloak keeps a marked target from being tracked in the first place", "Mute jammers block the tag from ever landing"],
     champion: ["Only mark a roamer once, then relay the exact rotate path instead of chasing the marker yourself", "Time the mark right before a coordinated push so the tracked defender can't safely reposition"] },
-  { name: "Solid Snake", side: "atk", role: "Intel", speed: 3, armor: 1, gadget: "Soliton Radar MKIII",
-    gadgetDesc: "Radar gadget that pings nearby enemy positions in a wide radius, feeding real-time intel without needing a drone or camera.",
-    difficulty: "Normal",
-    counters: ["Mute jammers block the radar from pinging within their radius", "Vigil's cloak keeps him from being pinpointed by the sweep at all"],
-    champion: ["Use the radar right before committing to a room to confirm it's clear without burning a drone", "Feed the ping data to your team's push order rather than acting on it solo"] },
 
   // ============ DEFENDERS ============
   { name: "Smoke", side: "def", role: "Area Denial", speed: 2, armor: 2, gadget: "Remote Gas Grenade",
@@ -258,7 +253,7 @@ export const OPERATORS = [
   { name: "Caveira", side: "def", role: "Roamer", speed: 3, armor: 1, gadget: "Silent Step / Luison",
     gadgetDesc: "Silent footsteps and a suppressed pistol for roaming, plus an interrogation ability that reveals the whole enemy team's location from a downed attacker.",
     difficulty: "Hard",
-    counters: ["Deimos, Jackal, or Solid Snake can all track a roamer's position before she gets the drop on anyone", "Move in pairs — she can't interrogate a covered teammate"],
+    counters: ["Deimos or Jackal can track a roamer's position before she gets the drop on anyone", "Move in pairs — she can't interrogate a covered teammate"],
     champion: ["Interrogate the first down immediately, even mid-fight, rather than waiting for a safer moment — the intel decays fast otherwise", "Roam early, then reposition toward the site once your interrogation intel narrows the remaining attackers' location"] },
   { name: "Echo", side: "def", role: "Intel / Denial", speed: 1, armor: 3, gadget: "Yokai Drone",
     gadgetDesc: "Flying drone that clings to ceilings and fires a sound burst to disorient anyone nearby without dealing damage.",
