@@ -18,7 +18,7 @@ const NAV = [
 
 function Footer() {
   return (
-    <div style={{ borderTop: `1px solid ${C.line}`, padding: "28px 24px", textAlign: "center" }}>
+    <div style={{ borderTop: `2px solid ${C.line}`, padding: "28px 24px", textAlign: "center" }}>
       <span className="mono" style={{ fontSize: 12, color: C.mute }}>NOT AFFILIATED WITH UBISOFT · COMMUNITY PROJECT · [BUILD 1.0]</span>
     </div>
   );
@@ -31,17 +31,17 @@ export default function SiegeHub() {
       <style>{`
         @media (max-width: 720px) { .detail-grid { grid-template-columns: 1fr !important; } }
       `}</style>
-      <nav style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(227,219,196,0.92)", backdropFilter: "blur(6px)", borderBottom: `1px solid ${C.line}`, padding: "20px 32px", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" }}>
-        <NavLink to="/" className="disp" style={{ fontSize: 23, textTransform: "uppercase", letterSpacing: "0.1em", color: C.paper }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 10, background: C.ink, backdropFilter: "blur(6px)", borderBottom: `3px solid ${C.paper}`, boxShadow: `0 3px 0 ${C.atk}`, padding: "22px 32px", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" }}>
+        <NavLink to="/" className="disp" style={{ fontSize: 25, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: C.paper }}>
           Site<span style={{ color: C.atk }}>//</span>Intel
         </NavLink>
-        <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 30, flexWrap: "wrap" }}>
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.end} className="navbtn mono"
               style={({ isActive }) => ({
                 background: "transparent", border: "none",
-                borderBottom: isActive ? `2px solid ${C.atk}` : "2px solid transparent",
-                color: isActive ? C.paper : C.mute, fontSize: 15, letterSpacing: "0.06em", padding: "8px 2px", cursor: "pointer",
+                borderBottom: isActive ? `3px solid ${C.atk}` : "3px solid transparent",
+                color: isActive ? C.paper : C.mute, fontWeight: isActive ? 700 : 500, fontSize: 15.5, letterSpacing: "0.07em", padding: "8px 2px", cursor: "pointer",
               })}>
               {n.label.toUpperCase()}
             </NavLink>

@@ -22,7 +22,7 @@ export default function OperatorsHub() {
           const c = C[s.color];
           return (
             <Link key={s.to} to={s.to} className="card"
-              style={{ display: "block", border: `1px solid ${C.line}`, borderRadius: 6, padding: 34, background: C.panel, position: "relative", overflow: "hidden" }}>
+              style={{ display: "block", border: `2px solid ${C.line}`, borderRadius: 2, padding: 34, background: C.panel, position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: -30, right: -20, fontSize: 140, fontWeight: 800, color: c, opacity: 0.08, lineHeight: 1 }} className="disp">
                 {count}
               </div>

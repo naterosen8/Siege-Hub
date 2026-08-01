@@ -53,7 +53,7 @@ function ProView({ op, side2, tier }) {
         ))}
       </div>
 
-      <div style={{ borderTop: `1px solid ${C.line}`, paddingTop: 20 }}>
+      <div style={{ borderTop: `2px solid ${C.line}`, paddingTop: 20 }}>
         <Tag tone="s">THE RANK GAP</Tag>
         <p style={{ margin: "12px 0 0", fontSize: 14.5, lineHeight: 1.7 }}>{pro.rankGap}</p>
       </div>
@@ -79,7 +79,7 @@ export default function OperatorDetail() {
     return (
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "90px 24px", textAlign: "center" }}>
         <p style={{ color: C.mute }}>No operator found for "{name}".</p>
-        <button onClick={() => nav("/operators")} className="navbtn mono" style={{ background: "transparent", color: C.paper, border: `1px solid ${C.line}`, padding: "10px 18px", fontSize: 13, borderRadius: 3, cursor: "pointer", marginTop: 16 }}>← BACK TO OPERATORS</button>
+        <button onClick={() => nav("/operators")} className="navbtn mono" style={{ background: "transparent", color: C.paper, border: `2px solid ${C.line}`, padding: "10px 18px", fontSize: 13, borderRadius: 1, cursor: "pointer", marginTop: 16 }}>← BACK TO OPERATORS</button>
       </div>
     );
   }
@@ -93,11 +93,11 @@ export default function OperatorDetail() {
 
       <div style={{ display: "flex", gap: 8, marginTop: 20, marginBottom: -4 }}>
         <button onClick={() => setMode("learning")} className="navbtn mono"
-          style={{ background: mode === "learning" ? C.panel2 : "transparent", border: `1px solid ${mode === "learning" ? C.mute : C.line}`, color: mode === "learning" ? C.paper : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 3, cursor: "pointer", fontWeight: mode === "learning" ? 600 : 400 }}>
+          style={{ background: mode === "learning" ? C.panel2 : "transparent", border: `2px solid ${mode === "learning" ? C.mute : C.line}`, color: mode === "learning" ? C.paper : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 1, cursor: "pointer", fontWeight: mode === "learning" ? 600 : 400 }}>
           LEARNING
         </button>
         <button onClick={() => setMode("pro")} className="navbtn mono"
-          style={{ background: mode === "pro" ? C.a : "transparent", border: `1px solid ${mode === "pro" ? C.a : C.line}`, color: mode === "pro" ? C.ink : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 3, cursor: "pointer", fontWeight: mode === "pro" ? 600 : 400 }}>
+          style={{ background: mode === "pro" ? C.a : "transparent", border: `2px solid ${mode === "pro" ? C.a : C.line}`, color: mode === "pro" ? C.ink : C.mute, padding: "8px 16px", fontSize: 12.5, borderRadius: 1, cursor: "pointer", fontWeight: mode === "pro" ? 600 : 400 }}>
           PRO INTEL
         </button>
       </div>
@@ -128,7 +128,7 @@ export default function OperatorDetail() {
           </div>
         </div>
 
-        <div style={{ marginTop: 24, paddingTop: 20, borderTop: `1px solid ${C.line}` }}>
+        <div style={{ marginTop: 24, paddingTop: 20, borderTop: `2px solid ${C.line}` }}>
           <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>GADGET — {op.gadget.toUpperCase()}</div>
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65 }}>{op.gadgetDesc}</p>
         </div>

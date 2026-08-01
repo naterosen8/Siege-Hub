@@ -7,7 +7,7 @@ import { OPERATORS, whoCounters } from "../data/operators.js";
 
 const PHASES = [
   { key: "all", label: "All Phases" },
-  { key: "draft", label: "Draft" },
+  { key: "draft", label: "Picks" },
   { key: "early", label: "Early Round" },
   { key: "mid", label: "Mid Round" },
   { key: "late", label: "Late Round" },
@@ -41,7 +41,7 @@ function ShuffleTip({ pool }) {
           )}
         </div>
         <button onClick={() => setTip(pickRandom(pool, tip))} className="navbtn mono" disabled={pool.length === 0}
-          style={{ background: C.atk, color: C.ink, border: "none", padding: "10px 18px", fontSize: 13, fontWeight: 600, borderRadius: 3, cursor: pool.length ? "pointer" : "not-allowed", flexShrink: 0, opacity: pool.length ? 1 : 0.5 }}>
+          style={{ background: C.atk, color: C.ink, border: "none", padding: "10px 18px", fontSize: 13, fontWeight: 600, borderRadius: 1, cursor: pool.length ? "pointer" : "not-allowed", flexShrink: 0, opacity: pool.length ? 1 : 0.5 }}>
           SHUFFLE ↻
         </button>
       </div>
@@ -82,7 +82,7 @@ function ScenarioQuiz() {
           {score === queue.length ? "Clean sweep." : score >= queue.length * 0.7 ? "Solid game sense." : "Worth another lap through the tips above."}
         </p>
         <button onClick={restart} className="navbtn mono"
-          style={{ background: C.a, color: C.ink, border: "none", padding: "10px 20px", fontSize: 13, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>
+          style={{ background: C.a, color: C.ink, border: "none", padding: "10px 20px", fontSize: 13, fontWeight: 600, borderRadius: 1, cursor: "pointer" }}>
           RETAKE QUIZ ↻
         </button>
       </Panel>
@@ -123,7 +123,7 @@ function ScenarioQuiz() {
           else if (answered) { color = C.mute; }
           return (
             <button key={i} onClick={() => answer(i)} disabled={answered} className="navbtn"
-              style={{ textAlign: "left", background: "transparent", border: `1px solid ${border}`, color, padding: "10px 14px", fontSize: 14, borderRadius: 3, cursor: answered ? "default" : "pointer" }}>
+              style={{ textAlign: "left", background: "transparent", border: `2px solid ${border}`, color, padding: "10px 14px", fontSize: 14, borderRadius: 1, cursor: answered ? "default" : "pointer" }}>
               {opt}{answered && isCorrect ? "  ✓" : ""}{answered && isPicked && !isCorrect ? "  ✗" : ""}
             </button>
           );
@@ -131,13 +131,13 @@ function ScenarioQuiz() {
       </div>
 
       {answered && (
-        <div style={{ marginTop: 16, paddingTop: 16, borderTop: `1px solid ${C.line}` }}>
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: `2px solid ${C.line}` }}>
           <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 6 }}>
             {selected === current.correct ? "CORRECT" : "NOT QUITE"}
           </div>
           <p style={{ fontSize: 14, lineHeight: 1.6, margin: "0 0 16px" }}>{current.why}</p>
           <button onClick={advance} className="navbtn mono"
-            style={{ background: C.a, color: C.ink, border: "none", padding: "9px 18px", fontSize: 13, fontWeight: 600, borderRadius: 3, cursor: "pointer" }}>
+            style={{ background: C.a, color: C.ink, border: "none", padding: "9px 18px", fontSize: 13, fontWeight: 600, borderRadius: 1, cursor: "pointer" }}>
             {index + 1 === queue.length ? "SEE RESULTS →" : "NEXT QUESTION →"}
           </button>
         </div>
@@ -175,7 +175,7 @@ export default function GameSense() {
         <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 10 }}>OPERATOR-SPECIFIC INTEL</div>
         <h3 className="disp" style={{ fontSize: 22, margin: "0 0 14px", textTransform: "uppercase" }}>Search an operator's counters &amp; champion plays</h3>
         <input value={opQuery} onChange={(e) => setOpQuery(e.target.value)} placeholder="SEARCH OPERATOR..." className="mono"
-          style={{ background: C.panel, border: `1px solid ${C.line}`, color: C.paper, padding: "10px 14px", borderRadius: 3, fontSize: 13, width: "100%", maxWidth: 360, marginBottom: 20 }} />
+          style={{ background: C.panel, border: `2px solid ${C.line}`, color: C.paper, padding: "10px 14px", borderRadius: 1, fontSize: 13, width: "100%", maxWidth: 360, marginBottom: 20 }} />
 
         {opQuery.trim() === "" && (
           <p style={{ color: C.mute, fontSize: 13.5 }}>Type a name — e.g. "Ace" or "Mira" — to pull that operator's documented counters and champion-level plays straight from their profile.</p>
@@ -186,7 +186,7 @@ export default function GameSense() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {opMatches.map((op) => (
-            <div key={op.name} style={{ border: `1px solid ${C.line}`, borderRadius: 4, padding: 18, background: C.panel }}>
+            <div key={op.name} style={{ border: `2px solid ${C.line}`, borderRadius: 1, padding: 18, background: C.panel }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
                 <Link to={`/operators/${encodeURIComponent(op.name)}`} className="disp" style={{ fontSize: 20, textTransform: "uppercase", color: op.side === "atk" ? C.atk : C.def }}>
                   {op.name}
@@ -194,7 +194,7 @@ export default function GameSense() {
                 <Tag tone={op.side}>{op.side === "atk" ? "ATTACKER" : "DEFENDER"}</Tag>
               </div>
 
-              <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: `1px solid ${C.line}` }}>
+              <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: `2px solid ${C.line}` }}>
                 <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>DIRECT COUNTERS — WHO SHUTS THEM DOWN</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {op.deniedBy.length === 0 && <span style={{ color: C.mute, fontSize: 13 }}>No specific operator named in the counters below — read them as general play patterns instead.</span>}
@@ -229,7 +229,7 @@ export default function GameSense() {
       <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
         {PHASES.map((p) => (
           <button key={p.key} onClick={() => setPhase(p.key)} className="navbtn mono"
-            style={{ background: phase === p.key ? C.panel2 : "transparent", border: `1px solid ${phase === p.key ? C.mute : C.line}`, color: phase === p.key ? C.paper : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 3, cursor: "pointer" }}>
+            style={{ background: phase === p.key ? C.panel2 : "transparent", border: `2px solid ${phase === p.key ? C.mute : C.line}`, color: phase === p.key ? C.paper : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 1, cursor: "pointer" }}>
             {p.label.toUpperCase()}
           </button>
         ))}
@@ -237,7 +237,7 @@ export default function GameSense() {
       <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
         {SIDES.map((s) => (
           <button key={s.key} onClick={() => setSide(s.key)} className="navbtn mono"
-            style={{ background: side === s.key ? C.panel2 : "transparent", border: `1px solid ${side === s.key ? C.mute : C.line}`, color: side === s.key ? C.paper : C.mute, padding: "6px 12px", fontSize: 11.5, borderRadius: 3, cursor: "pointer" }}>
+            style={{ background: side === s.key ? C.panel2 : "transparent", border: `2px solid ${side === s.key ? C.mute : C.line}`, color: side === s.key ? C.paper : C.mute, padding: "6px 12px", fontSize: 11.5, borderRadius: 1, cursor: "pointer" }}>
             {s.label.toUpperCase()}
           </button>
         ))}
@@ -245,7 +245,7 @@ export default function GameSense() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14, marginBottom: 50 }}>
         {list.map((t, i) => (
-          <div key={i} className="card" style={{ border: `1px solid ${C.line}`, borderRadius: 4, padding: 18, background: C.panel }}>
+          <div key={i} className="card" style={{ border: `2px solid ${C.line}`, borderRadius: 1, padding: 18, background: C.panel }}>
             <Tag tone={t.side === "atk" ? "atk" : t.side === "def" ? "def" : "mute"}>
               {PHASES.find((p) => p.key === t.phase)?.label.toUpperCase()}{t.side !== "both" ? ` · ${t.side.toUpperCase()}` : ""}
             </Tag>

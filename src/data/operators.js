@@ -161,7 +161,7 @@ export const OPERATORS = [
   { name: "Sens", side: "atk", role: "Utility / Denial", speed: 3, armor: 1, gadget: "R.O.U. Projector System",
     gadgetDesc: "Deploys a barrier that redirects and destroys projectiles thrown into it, shutting down grenade and gadget spam into a room.",
     difficulty: "Normal",
-    counters: ["Warden is the most common answer here — teams draft him specifically to play through her barrier control", "It has a limited uptime — wait it out if you have the round-clock to spare"],
+    counters: ["Warden is the most common answer here — teams pick him specifically to play through her barrier control", "It has a limited uptime — wait it out if you have the round-clock to spare"],
     champion: ["Place it to protect a plant that's under heavy defender grenade pressure, not just as an entry tool", "Use it defensively for your own team during a retake to neutralize a defender's utility"] },
   { name: "Grim", side: "atk", role: "Tracker / Denial", speed: 3, armor: 1, gadget: "Kawan Hive Launcher",
     gadgetDesc: "Fires a hive that releases a swarm damaging and revealing anyone who lingers in its cloud.",

@@ -3,8 +3,8 @@
 /* phase: draft | early | mid | late — round-phase this principle applies to.
    side: both | atk | def */
 export const TIPS = [
-  // ---- DRAFT ----
-  { phase: "draft", side: "both", text: "Draft your comp around denying the enemy's strongest pick, not just picking your own favorite — a hard-breach denial defender is worthless if the enemy never brings a hard breacher." },
+  // ---- PICKS (phase key stays "draft" internally, displayed as "Picks") ----
+  { phase: "draft", side: "both", text: "Build your comp around denying the enemy's strongest pick, not just picking your own favorite — a hard-breach denial defender is worthless if the enemy never brings a hard breacher." },
   { phase: "draft", side: "both", text: "Secondary gadgets matter as much as primary ones at a high level — a well-timed frag or smoke often decides a round before the unique gadget ever gets used." },
   { phase: "draft", side: "both", text: "Map-specific operator bans exist for a reason — an operator that's B-tier map-wide can be an auto-pick or an auto-ban on the right map." },
   { phase: "draft", side: "def", text: "Reinforce walls that create rotates for you, not just the ones attackers are likely to breach — defense is a network, not a wall count." },
@@ -36,12 +36,12 @@ export const TIPS = [
 /* Scenario quiz — round-state judgment calls, each grounded in one of the TIPS above.
    options: array of strings, correct: index into options, why: explanation shown after answering. */
 export const SCENARIOS = [
-  { phase: "draft", scenario: "The enemy team has drafted zero hard-breach denial — no Bandit, Kaid, or Mute. What should attack prioritize?",
-    options: ["Draft extra intel operators since utility denial isn't a threat this game", "Bring a hard breacher and plan to open a wall cleanly, since nothing will contest it", "It doesn't matter — hard breach denial rarely gets used anyway"],
-    correct: 1, why: "Draft around denying the enemy's strongest pick — and around exploiting the gaps in theirs. A clean, uncontested hard breach is free value when the defense has no answer for it." },
-  { phase: "draft", scenario: "Your team already has strong secondary-gadget coverage but no unique hard-breach denial defender. Should you draft one anyway?",
+  { phase: "draft", scenario: "The enemy team has picked zero hard-breach denial — no Bandit, Kaid, or Mute. What should attack prioritize?",
+    options: ["Pick extra intel operators since utility denial isn't a threat this game", "Bring a hard breacher and plan to open a wall cleanly, since nothing will contest it", "It doesn't matter — hard breach denial rarely gets used anyway"],
+    correct: 1, why: "Build your comp around denying the enemy's strongest pick — and around exploiting the gaps in theirs. A clean, uncontested hard breach is free value when the defense has no answer for it." },
+  { phase: "draft", scenario: "Your team already has strong secondary-gadget coverage but no unique hard-breach denial defender. Should you pick one anyway?",
     options: ["Yes, always — hard breach denial is mandatory every game", "Only if it fills a real gap for this specific matchup or map, not just because it's available", "No — secondary gadgets always outperform a dedicated denial pick"],
-    correct: 1, why: "Map-specific and matchup-specific bans exist for a reason — the same pick can be essential on one map and dead weight on another. Draft for the gap in front of you, not a fixed formula." },
+    correct: 1, why: "Map-specific and matchup-specific bans exist for a reason — the same pick can be essential on one map and dead weight on another. Pick for the gap in front of you, not a fixed formula." },
   { phase: "early", scenario: "It's the first 10 seconds of the round and you have a free drone. When does that information matter most?",
     options: ["Save the drone battery for later in the round", "Use it immediately to read rotates and utility placement before committing anything", "It doesn't matter when you use it, as long as you use it eventually"],
     correct: 1, why: "The first 15 seconds are worth more than the last 15 — early reads on rotates and utility compound into every decision that follows. A drone saved for later is information you didn't have when it mattered most." },
@@ -75,9 +75,9 @@ export const SCENARIOS = [
   { phase: "late", scenario: "You get the last kill of the round, but the plant timer has 8 seconds left with no attacker contesting it.",
     options: ["Push for one more pick since the round is basically won", "Hold your current angle on the plant and let the timer run out — don't take a risk you don't need", "Push into an uncleared room just to be thorough"],
     correct: 1, why: "The round is already decided. Pushing for a bonus pick with 8 seconds on the clock only creates a chance to throw a won round for zero additional value." },
-  { phase: "draft", scenario: "It's a Bo3 and you lost map 1 to a defense that showed a clear, repeated rotation pattern on one site all game. Going into map 2's draft on a different map, what matters most from that read?",
-    options: ["Copy the exact same comp you lost with", "Nothing from map 1 carries over — drafting is purely map-specific", "Note how they play rotations and utility in general, and draft to deny or exploit that tendency"],
-    correct: 2, why: "Individual site setups are map-specific, but a team's rotation habits and utility discipline carry across maps. Drafting to exploit a demonstrated tendency is real preparation, not superstition." },
+  { phase: "draft", scenario: "It's a Bo3 and you lost map 1 to a defense that showed a clear, repeated rotation pattern on one site all game. Heading into your picks for map 2 on a different map, what matters most from that read?",
+    options: ["Copy the exact same comp you lost with", "Nothing from map 1 carries over — picks are purely map-specific", "Note how they play rotations and utility in general, and pick to deny or exploit that tendency"],
+    correct: 2, why: "Individual site setups are map-specific, but a team's rotation habits and utility discipline carry across maps. Picking to exploit a demonstrated tendency is real preparation, not superstition." },
   { phase: "early", scenario: "You get a very confident read on the enemy's plan within the first 20 seconds of the round — the kind of read that's right maybe 60% of the time.",
     options: ["Commit your whole team to it immediately", "Lean your positioning toward it without fully committing, and confirm before going all-in", "Ignore it completely since it isn't certain"],
     correct: 1, why: "A 60%-confidence read is real information, not proof. Weighting your setup toward it while still confirming avoids both the trap of ignoring good intel and the trap of overcommitting to an early guess." },
@@ -90,9 +90,9 @@ export const SCENARIOS = [
   { phase: "mid", scenario: "An attacker denies your only anti-entry gadget on one route early, with two minutes left in the round.",
     options: ["The round is unwinnable now, so play passively and give up ground", "Reposition your hold to account for the now-open route and lean on teammates' utility to cover it", "Immediately push out to trade for the gadget that got denied"],
     correct: 1, why: "Losing one piece of utility isn't the round. Adjusting the hold to account for the new gap is the disciplined response — panicking into a trade or checking out mentally both throw away a still-winnable round." },
-  { phase: "draft", scenario: "You're picking last in the draft phase and notice the enemy has no dedicated intel operators at all, just base drones.",
+  { phase: "draft", scenario: "You're picking last and notice the enemy has no dedicated intel operators at all, just base drones.",
     options: ["It doesn't affect your pick at all", "Roaming and off-angle plays are safer than usual, since you're less likely to get tracked or revealed", "Always pick the flashiest available operator regardless of the matchup"],
-    correct: 1, why: "A defense with no dedicated intel tools has a real gap in finding roamers. Picking or playing into that — favoring roam-heavy operators and off-angles — turns a drafting observation into round-by-round value." },
+    correct: 1, why: "A defense with no dedicated intel tools has a real gap in finding roamers. Picking or playing into that — favoring roam-heavy operators and off-angles — turns an early observation into round-by-round value." },
   { phase: "early", scenario: "You drone a site and see one defender leave their anchor position within the first 15 seconds, well before any pressure exists.",
     options: ["That information is useless this early in the round", "Note it — an unprompted early reposition often signals a roam path or where they expect real pressure later", "Immediately call a full team rush on the now-empty room"],
     correct: 1, why: "An early, unforced reposition is a real data point, not noise — it tells you something about their plan before a single shot is fired. The mistake isn't using it, it's overreacting to it with an immediate all-in." },
@@ -110,8 +110,8 @@ export const SCENARIOS = [
   { phase: "late", scenario: "A teammate goes down mid-retake, but the attacker holding the room hasn't been located yet. What's the right call?",
     options: ["Immediately push to revive them no matter what", "Hold your current angle — reviving into an unconfirmed room risks a second down for a teammate you don't know you can safely reach", "Leave the round entirely and let the timer run out"],
     correct: 1, why: "A downed teammate is a real loss, but reviving blind into a room with an unlocated attacker often just creates a second down. Confirm the threat first — the revive is worth far more once the room is actually safe to enter." },
-  { phase: "draft", scenario: "Your match has gone to overtime. How should draft priorities shift compared to a normal round?",
-    options: ["Draft exactly the same way you would any other round", "Lean toward proven, well-rounded picks over situational ones — overtime is single-elimination pressure, not a place to experiment", "Draft the flashiest available operator since it's the last round anyway"],
+  { phase: "draft", scenario: "Your match has gone to overtime. How should your picks shift compared to a normal round?",
+    options: ["Pick exactly the same way you would any other round", "Lean toward proven, well-rounded picks over situational ones — overtime is single-elimination pressure, not a place to experiment", "Pick the flashiest available operator since it's the last round anyway"],
     correct: 1, why: "Overtime removes the margin for a pick that only pays off with time to develop. Reliable, well-rounded operators reduce variance exactly when a single mistake ends the match." },
   { phase: "mid", scenario: "You drone a defender's exact position, but your team is scattered and not ready to punish it immediately. What's the right move?",
     options: ["Call it out and immediately push alone to capitalize before it's stale", "Call it out clearly so the read is available the moment the team can act on it, without forcing an immediate solo push", "Keep it to yourself until you personally can act on it"],
@@ -127,7 +127,7 @@ export const SCENARIOS = [
     correct: 1, why: "Two converging threats need two separate answers. Watching the bomb instead of the doors just guarantees whichever angle nobody's covering is the one that gets used." },
   { phase: "draft", scenario: "An enemy ban leaves a specific, powerful operator open that your team hasn't used all match. Should you take it immediately?",
     options: ["Yes, always take the strongest available pick regardless of fit", "Only if it actually fits this map and this matchup — a strong pick that doesn't solve a real problem is still a wasted slot", "No, never deviate from your team's regular picks"],
-    correct: 1, why: "A pick being available and a pick being right for the situation are two different questions. The strongest operator on paper is a wasted draft slot if it doesn't answer something this specific matchup demands." },
+    correct: 1, why: "A pick being available and a pick being right for the situation are two different questions. The strongest operator on paper is a wasted pick if it doesn't answer something this specific matchup demands." },
 
   // ---- OPERATOR-KNOWLEDGE (grounded in each operator's documented counters) ----
   { phase: "mid", scenario: "Thermite has his Exothermic Charge armed on a reinforced wall, about to trigger it. Which of these actually stops the charge before it detonates?",
@@ -164,8 +164,8 @@ export const SCENARIOS = [
     options: ["Hit her from range with a launcher tool like Zofia's or Capitão's, since the shield doesn't stop those", "Trade point-blank gunfire directly into her shield until it breaks", "Her shield covers all angles equally, so flanking does nothing"],
     correct: 0, why: "Zofia or Capitão's launcher tools hit her from range in ways her shield doesn't stop, and flanking works too since the shield only covers her front. Standing and trading gunfire into the shield just feeds her the tase." },
   { phase: "mid", scenario: "Sens has her barrier deployed, splitting the room and blocking your push. What's the most direct way to deal with it as a defender?",
-    options: ["Draft or play Warden, who's specifically built to play through her barrier control", "Any hard-breach operator destroys her barrier instantly", "The barrier never expires, so it must be physically destroyed to get past it"],
-    correct: 0, why: "Warden is the most common direct answer, drafted specifically to play through her barrier control. Otherwise, the barrier has limited uptime — worth waiting out if the round clock allows, rather than assuming it needs to be destroyed." },
+    options: ["Pick or play Warden, who's specifically built to play through her barrier control", "Any hard-breach operator destroys her barrier instantly", "The barrier never expires, so it must be physically destroyed to get past it"],
+    correct: 0, why: "Warden is the most common direct answer, picked specifically to play through her barrier control. Otherwise, the barrier has limited uptime — worth waiting out if the round clock allows, rather than assuming it needs to be destroyed." },
   { phase: "mid", scenario: "Grim has hives active, tracking and damaging anyone who walks through their zone. What actually stops a hive from being a problem?",
     options: ["A Mute jammer stops a hive from deploying its bees, and stepping into a jammer's radius clears an active swarm off you", "Hives are permanent once deployed — there's no way to clear one off a defender", "Standing still inside the swarm prevents any damage"],
     correct: 0, why: "Mute's jammer both stops a hive from deploying and clears an active swarm off anyone standing in a jammer's radius. Jäger's ADS can also intercept a hive before it lands. Standing still doesn't stop the tracking damage." },

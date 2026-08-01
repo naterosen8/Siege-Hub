@@ -14,7 +14,7 @@ export function Fonts() {
         background-image: linear-gradient(${C.line}55 1px, transparent 1px), linear-gradient(90deg, ${C.line}55 1px, transparent 1px);
         background-size: 40px 40px; background-position: -1px -1px;
       }
-      .tick { position: absolute; width: 14px; height: 14px; border: 1px solid ${C.mute}; opacity: 0.5; }
+      .tick { position: absolute; width: 22px; height: 22px; border: 3px solid ${C.atk}; opacity: 0.7; }
       .navbtn { transition: color .15s ease, border-color .15s ease, background .15s ease; }
       .navbtn:hover { color: ${C.paper} !important; }
       .card { transition: border-color .15s ease, transform .15s ease; }
@@ -34,7 +34,7 @@ export function Fonts() {
 export function Tag({ children, tone = "mute" }) {
   const color = tone === "atk" ? C.atk : tone === "def" ? C.def : tone === "ok" ? C.ok : tone === "s" ? C.s : tone === "a" ? C.a : C.mute;
   return (
-    <span className="mono" style={{ display: "inline-block", fontSize: 12, letterSpacing: "0.04em", color, border: `1px solid ${color}`, borderRadius: 3, padding: "2px 7px", background: "rgba(0,0,0,0.03)" }}>
+    <span className="mono" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", color, border: `2px solid ${color}`, borderRadius: 1, padding: "3px 9px", background: "rgba(0,0,0,0.04)" }}>
       [{children}]
     </span>
   );
@@ -53,14 +53,14 @@ export function CornerTicks() {
 
 export function SectionLabel({ n, children, sub }) {
   return (
-    <div style={{ marginBottom: 22 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <span className="mono" style={{ color: C.mute, fontSize: 13 }}>{n}</span>
-        <span style={{ flex: "0 0 20px", height: 1, background: C.line }} />
-        <h2 className="disp" style={{ fontSize: 26, margin: 0, textTransform: "uppercase" }}>{children}</h2>
-        <span style={{ flex: 1, height: 1, background: C.line }} />
+    <div style={{ marginBottom: 26 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <span className="mono" style={{ color: C.ink, fontSize: 13, fontWeight: 700, background: C.paper, padding: "4px 9px" }}>{n}</span>
+        <span style={{ flex: "0 0 28px", height: 3, background: C.atk }} />
+        <h2 className="disp" style={{ fontSize: "clamp(28px, 4vw, 40px)", margin: 0, textTransform: "uppercase", letterSpacing: "0.01em" }}>{children}</h2>
+        <span style={{ flex: 1, height: 3, background: C.line }} />
       </div>
-      {sub && <p style={{ color: C.mute, fontSize: 14, maxWidth: 640, margin: "10px 0 0" }}>{sub}</p>}
+      {sub && <p style={{ color: C.mute, fontSize: 14.5, maxWidth: 640, margin: "12px 0 0", lineHeight: 1.6 }}>{sub}</p>}
     </div>
   );
 }
@@ -77,7 +77,7 @@ export function Pips({ n, max = 3, color }) {
 
 export function Panel({ children, style }) {
   return (
-    <div style={{ position: "relative", border: `1px solid ${C.line}`, borderRadius: 4, background: C.panel, padding: 22, ...style }}>
+    <div style={{ position: "relative", border: `2px solid ${C.line}`, borderTop: `4px solid ${C.mute}`, borderRadius: 1, background: C.panel, padding: 22, ...style }}>
       {children}
     </div>
   );

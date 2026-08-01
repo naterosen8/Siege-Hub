@@ -50,15 +50,15 @@ export default function Operators({ side }) {
 
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 16 }}>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="SEARCH OPERATOR..." className="mono"
-          style={{ background: C.panel, border: `1px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 3, fontSize: 12.5, flex: "1 1 200px" }} />
+          style={{ background: C.panel, border: `2px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 1, fontSize: 12.5, flex: "1 1 200px" }} />
         <select value={sort} onChange={(e) => setSort(e.target.value)} className="mono"
-          style={{ background: C.panel, border: `1px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 3, fontSize: 12.5 }}>
+          style={{ background: C.panel, border: `2px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 1, fontSize: 12.5 }}>
           <option value="name">SORT: NAME</option>
           <option value="tier">SORT: TIER</option>
           <option value="speed">SORT: SPEED</option>
         </select>
         <Link to={OTHER_PATH[side]} className="navbtn mono"
-          style={{ display: "flex", alignItems: "center", background: "transparent", border: `1px solid ${C.line}`, color: C.mute, padding: "9px 16px", fontSize: 12.5, borderRadius: 3 }}>
+          style={{ display: "flex", alignItems: "center", background: "transparent", border: `2px solid ${C.line}`, color: C.mute, padding: "9px 16px", fontSize: 12.5, borderRadius: 1 }}>
           SWITCH TO {SIDE_LABEL[side === "atk" ? "def" : "atk"].toUpperCase()}
         </Link>
       </div>
@@ -67,7 +67,7 @@ export default function Operators({ side }) {
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 22 }}>
         {["all", ...CATEGORIES].map((c) => (
           <button key={c} onClick={() => setCategory(c)} className="navbtn mono"
-            style={{ background: category === c ? side2 : "transparent", border: `1px solid ${category === c ? side2 : C.line}`, color: category === c ? C.ink : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 3, cursor: "pointer", fontWeight: category === c ? 600 : 400 }}>
+            style={{ background: category === c ? side2 : "transparent", border: `2px solid ${category === c ? side2 : C.line}`, color: category === c ? C.ink : C.mute, padding: "7px 14px", fontSize: 12, borderRadius: 1, cursor: "pointer", fontWeight: category === c ? 600 : 400 }}>
             {c === "all" ? "ALL" : c.toUpperCase()}
           </button>
         ))}
@@ -80,14 +80,14 @@ export default function Operators({ side }) {
           const tier = tierOf(op.name);
           return (
             <Link key={op.name} to={`/operators/${encodeURIComponent(op.name)}`} className="card opcard2"
-              style={{ border: `1px solid ${C.line}`, borderRadius: 4, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+              style={{ border: `2px solid ${C.line}`, borderRadius: 1, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
               <div style={{ position: "relative", aspectRatio: "1 / 1", background: `${side2}1c`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <span className="disp" style={{ fontSize: 34, color: side2, fontWeight: 800 }}>{initials(op.name)}</span>
-                <span className="mono" style={{ position: "absolute", top: 6, right: 6, fontSize: 10, fontWeight: 700, color: tierColor(tier), border: `1px solid ${tierColor(tier)}`, borderRadius: 2, padding: "1px 4px", background: C.panel }}>
+                <span className="mono" style={{ position: "absolute", top: 6, right: 6, fontSize: 10, fontWeight: 700, color: tierColor(tier), border: `2px solid ${tierColor(tier)}`, borderRadius: 2, padding: "1px 4px", background: C.panel }}>
                   {tier}
                 </span>
               </div>
-              <div style={{ padding: "7px 8px", borderTop: `1px solid ${C.line}` }}>
+              <div style={{ padding: "7px 8px", borderTop: `2px solid ${C.line}` }}>
                 <div className="mono" style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.02em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {op.name}
                 </div>
