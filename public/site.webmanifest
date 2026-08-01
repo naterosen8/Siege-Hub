@@ -1,7 +1,7 @@
 {
   "name": "Site//Intel — R6 Siege Strategy Hub",
   "short_name": "Site//Intel",
-  "description": "Champion-level Rainbow Six Siege strategy — operator counters, live matchups, and a meta tier list.",
+  "description": "Champion-level Rainbow Six Siege strategy — operator counters, a live matchup tool, and a game sense quiz.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#E3DBC4",

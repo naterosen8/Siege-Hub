@@ -50,7 +50,7 @@ export default function SiegeHub() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<><Home /><GameSense /></>} />
+        <Route path="/" element={<Home />} />
         <Route path="/operators" element={<OperatorsHub />} />
         <Route path="/operators/attack" element={<Operators side="atk" />} />
         <Route path="/operators/defense" element={<Operators side="def" />} />
