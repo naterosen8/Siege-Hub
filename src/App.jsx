@@ -32,8 +32,8 @@ export default function SiegeHub() {
         @media (max-width: 720px) { .detail-grid { grid-template-columns: 1fr !important; } }
       `}</style>
       <nav style={{ position: "sticky", top: 0, zIndex: 10, background: C.ink, backdropFilter: "blur(6px)", borderBottom: `3px solid ${C.paper}`, boxShadow: `0 3px 0 ${C.atk}`, padding: "22px 32px", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" }}>
-        <NavLink to="/" className="disp" style={{ fontSize: 25, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: C.paper }}>
-          Site<span style={{ color: C.atk }}>//</span>Intel
+        <NavLink to="/" className="disp" style={{ fontSize: "clamp(14px, 2vw, 18px)", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", lineHeight: 1.15, color: C.paper, maxWidth: 320 }}>
+          Know Your <span style={{ color: C.atk }}>Siege</span> Knowledge Beyond Question
         </NavLink>
         <div style={{ display: "flex", gap: 30, flexWrap: "wrap" }}>
           {NAV.map((n) => (
