@@ -192,17 +192,3 @@ export const SCENARIOS = [
     correct: 0, why: "Non-electronic attacker tools don't trigger her sensor at all, and IQ can spot the sensor's own signature the same way she spots any other active electronic gadget — Solis isn't invisible to counter-detection herself." },
 ];
 
-/* S/A/B/C tiers — general competitive relevance snapshot, shown as a small badge on operator cards/detail pages. */
-export const TIER_MAP = {
-  // S
-  Nomad: "S", Thatcher: "S", Ace: "S", Smoke: "S", Mira: "S", Azami: "S",
-  // A
-  Sledge: "A", Ash: "A", Zofia: "A", Iana: "A", Jackal: "A", Twitch: "A", Osa: "A", Grim: "A", Ram: "A", Dokkaebi: "A",
-  Bandit: "A", Jäger: "A", Melusi: "A", Wamai: "A", Goyo: "A", Oryx: "A", Thorn: "A", Solis: "A", Kaid: "A", Maestro: "A",
-  Hibana: "A", Sens: "A", Rauora: "A", Deimos: "A", Skopós: "A", Fenrir: "A",
-  // C (niche / low pick-rate)
-  Tachanka: "C", Kapkan: "C", Glaz: "C", Capitão: "C", Blitz: "C", Vigil: "C", Warden: "C", Nøkk: "C",
-  Montagne: "C", Frost: "C", Lesion: "C", Sentry: "C",
-};
-
-export const tierOf = (name) => TIER_MAP[name] || "B";

@@ -1,12 +1,11 @@
 import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { C, tierColor } from "../theme.js";
+import { C } from "../theme.js";
 import { Tag, Pips, Panel } from "../components/ui.jsx";
 import { OPERATORS, whoCounters, whoOpCounters } from "../data/operators.js";
-import { tierOf } from "../data/meta.js";
 import { PRO_INTEL } from "../data/proIntel.js";
 
-function ProView({ op, side2, tier }) {
+function ProView({ op, side2 }) {
   const pro = PRO_INTEL[op.name];
   if (!pro) {
     return (
@@ -21,10 +20,7 @@ function ProView({ op, side2, tier }) {
 
   return (
     <Panel style={{ marginTop: 18, padding: 30, borderColor: C.a }}>
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <Tag tone="a">PRO INTEL</Tag>
-        <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: tierColor(tier) }}>{tier}-TIER</span>
-      </div>
+      <Tag tone="a">PRO INTEL</Tag>
       <h1 className="disp" style={{ fontSize: 38, margin: "14px 0 2px", textTransform: "uppercase", color: side2 }}>{op.name}</h1>
       <p style={{ color: C.mute, fontSize: 14, margin: "0 0 26px" }}>Diamond-level breakdown — mechanics, sequencing, and the gap between good and great.</p>
 
@@ -85,7 +81,6 @@ export default function OperatorDetail() {
   }
 
   const side2 = op.side === "atk" ? C.atk : C.def;
-  const tier = tierOf(op.name);
 
   return (
     <div className="fade-up" style={{ maxWidth: 900, margin: "0 auto", padding: "50px 24px 90px" }}>
@@ -103,7 +98,7 @@ export default function OperatorDetail() {
       </div>
 
       {mode === "pro" ? (
-        <ProView op={op} side2={side2} tier={tier} />
+        <ProView op={op} side2={side2} />
       ) : (
       <Panel style={{ marginTop: 18, padding: 30 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 14 }}>
@@ -111,7 +106,6 @@ export default function OperatorDetail() {
             <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 8 }}>
               <Tag tone={op.side}>{op.side === "atk" ? "ATTACKER" : "DEFENDER"}</Tag>
               <Tag>{op.difficulty.toUpperCase()}</Tag>
-              <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: tierColor(tier) }}>{tier}-TIER</span>
             </div>
             <h1 className="disp" style={{ fontSize: 44, margin: 0, textTransform: "uppercase", color: side2 }}>{op.name}</h1>
             <div style={{ color: C.mute, fontSize: 15, marginTop: 4 }}>{op.role}</div>

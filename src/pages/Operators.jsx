@@ -1,9 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { C, tierColor } from "../theme.js";
+import { C } from "../theme.js";
 import { SectionLabel } from "../components/ui.jsx";
 import { OPERATORS, CATEGORIES, categoryOf } from "../data/operators.js";
-import { tierOf } from "../data/meta.js";
 
 const SIDE_LABEL = { atk: "Attackers", def: "Defenders" };
 const OTHER_PATH = { atk: "/operators/defense", def: "/operators/attack" };
@@ -25,10 +24,7 @@ export default function Operators({ side }) {
       (category === "all" || categoryOf(op.role) === category) &&
       op.name.toLowerCase().includes(q.toLowerCase())
     );
-    if (sort === "tier") {
-      const order = { S: 0, A: 1, B: 2, C: 3 };
-      l = [...l].sort((a, b) => order[tierOf(a.name)] - order[tierOf(b.name)]);
-    } else if (sort === "speed") {
+    if (sort === "speed") {
       l = [...l].sort((a, b) => b.speed - a.speed);
     } else {
       l = [...l].sort((a, b) => a.name.localeCompare(b.name));
@@ -54,7 +50,6 @@ export default function Operators({ side }) {
         <select value={sort} onChange={(e) => setSort(e.target.value)} className="mono"
           style={{ background: C.panel, border: `2px solid ${C.line}`, color: C.paper, padding: "9px 12px", borderRadius: 1, fontSize: 12.5 }}>
           <option value="name">SORT: NAME</option>
-          <option value="tier">SORT: TIER</option>
           <option value="speed">SORT: SPEED</option>
         </select>
         <Link to={OTHER_PATH[side]} className="navbtn mono"
@@ -76,28 +71,22 @@ export default function Operators({ side }) {
       <div className="mono" style={{ fontSize: 12, color: C.mute, marginBottom: 14 }}>{list.length} OPERATOR{list.length === 1 ? "" : "S"}</div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr))", gap: 10 }}>
-        {list.map((op) => {
-          const tier = tierOf(op.name);
-          return (
-            <Link key={op.name} to={`/operators/${encodeURIComponent(op.name)}`} className="card opcard2"
-              style={{ border: `2px solid ${C.line}`, borderRadius: 1, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-              <div style={{ position: "relative", aspectRatio: "1 / 1", background: `${side2}1c`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="disp" style={{ fontSize: 34, color: side2, fontWeight: 800 }}>{initials(op.name)}</span>
-                <span className="mono" style={{ position: "absolute", top: 6, right: 6, fontSize: 10, fontWeight: 700, color: tierColor(tier), border: `2px solid ${tierColor(tier)}`, borderRadius: 2, padding: "1px 4px", background: C.panel }}>
-                  {tier}
-                </span>
+        {list.map((op) => (
+          <Link key={op.name} to={`/operators/${encodeURIComponent(op.name)}`} className="card opcard2"
+            style={{ border: `2px solid ${C.line}`, borderRadius: 1, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+            <div style={{ position: "relative", aspectRatio: "1 / 1", background: `${side2}1c`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span className="disp" style={{ fontSize: 34, color: side2, fontWeight: 800 }}>{initials(op.name)}</span>
+            </div>
+            <div style={{ padding: "7px 8px", borderTop: `2px solid ${C.line}` }}>
+              <div className="mono" style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.02em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {op.name}
               </div>
-              <div style={{ padding: "7px 8px", borderTop: `2px solid ${C.line}` }}>
-                <div className="mono" style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.02em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {op.name}
-                </div>
-                <div style={{ fontSize: 10, color: C.mute, marginTop: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {op.role}
-                </div>
+              <div style={{ fontSize: 10, color: C.mute, marginTop: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {op.role}
               </div>
-            </Link>
-          );
-        })}
+            </div>
+          </Link>
+        ))}
         {list.length === 0 && <p style={{ color: C.mute, gridColumn: "1 / -1" }}>No operators match that search.</p>}
       </div>
     </div>
