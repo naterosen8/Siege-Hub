@@ -75,6 +75,55 @@ export function Pips({ n, max = 3, color }) {
   );
 }
 
+/* Original geometric glyphs — one per role category. Hand-drawn shape primitives, not derived from any game asset. */
+const ROLE_ICON_SHAPES = {
+  "Intel": (
+    <>
+      <circle cx="50" cy="50" r="36" />
+      <circle cx="50" cy="50" r="22" />
+      <line x1="50" y1="50" x2="78" y2="24" strokeLinecap="round" />
+      <circle cx="50" cy="50" r="6" fill="currentColor" stroke="none" />
+    </>
+  ),
+  "Anti-Gadget": (
+    <>
+      <polygon points="50,12 84,31 84,69 50,88 16,69 16,31" />
+      <polyline points="32,50 45,50 41,36 59,64 55,50 68,50" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  "Support": (
+    <>
+      <circle cx="50" cy="50" r="36" />
+      <line x1="50" y1="30" x2="50" y2="70" strokeLinecap="round" />
+      <line x1="30" y1="50" x2="70" y2="50" strokeLinecap="round" />
+    </>
+  ),
+  "Front Line": (
+    <path d="M50 12 L81 25 V54 C81 73 68 84 50 90 C32 84 19 73 19 54 V25 Z" />
+  ),
+  "Map Control": (
+    <>
+      <line x1="50" y1="24" x2="24" y2="70" />
+      <line x1="50" y1="24" x2="76" y2="70" />
+      <line x1="24" y1="70" x2="76" y2="70" />
+      <circle cx="50" cy="24" r="8" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="70" r="8" fill="currentColor" stroke="none" />
+      <circle cx="76" cy="70" r="8" fill="currentColor" stroke="none" />
+    </>
+  ),
+  "Breach": (
+    <polygon points="50,8 59,41 92,50 59,59 50,92 41,59 8,50 41,41" fill="currentColor" stroke="none" />
+  ),
+};
+
+export function RoleIcon({ category, size = 40, strokeWidth = 5, style }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth={strokeWidth} style={style}>
+      {ROLE_ICON_SHAPES[category] || ROLE_ICON_SHAPES["Support"]}
+    </svg>
+  );
+}
+
 export function Panel({ children, style }) {
   return (
     <div style={{ position: "relative", border: `2px solid ${C.line}`, borderTop: `4px solid ${C.mute}`, borderRadius: 1, background: C.panel, padding: 22, ...style }}>

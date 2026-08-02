@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { C } from "../theme.js";
-import { Tag, Pips, Panel } from "../components/ui.jsx";
-import { OPERATORS, whoCounters, whoOpCounters } from "../data/operators.js";
+import { Tag, Pips, Panel, RoleIcon } from "../components/ui.jsx";
+import { OPERATORS, whoCounters, whoOpCounters, categoryOf } from "../data/operators.js";
 import { PRO_INTEL } from "../data/proIntel.js";
 
 function ProView({ op, side2 }) {
@@ -20,9 +20,16 @@ function ProView({ op, side2 }) {
 
   return (
     <Panel style={{ marginTop: 18, padding: 30, borderColor: C.a }}>
-      <Tag tone="a">PRO INTEL</Tag>
-      <h1 className="disp" style={{ fontSize: 38, margin: "14px 0 2px", textTransform: "uppercase", color: side2 }}>{op.name}</h1>
-      <p style={{ color: C.mute, fontSize: 14, margin: "0 0 26px" }}>Diamond-level breakdown — mechanics, sequencing, and the gap between good and great.</p>
+      <div style={{ display: "flex", gap: 18, alignItems: "center" }}>
+        <div style={{ flexShrink: 0, width: 64, height: 64, border: `2px solid ${side2}`, borderRadius: 1, background: `linear-gradient(160deg, ${side2}26, ${side2}0a)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <RoleIcon category={categoryOf(op.role)} size={36} strokeWidth={5} style={{ color: side2 }} />
+        </div>
+        <div>
+          <Tag tone="a">PRO INTEL</Tag>
+          <h1 className="disp" style={{ fontSize: 38, margin: "10px 0 2px", textTransform: "uppercase", color: side2 }}>{op.name}</h1>
+        </div>
+      </div>
+      <p style={{ color: C.mute, fontSize: 14, margin: "18px 0 26px" }}>Diamond-level breakdown — mechanics, sequencing, and the gap between good and great.</p>
 
       <div style={{ marginBottom: 26 }}>
         <div className="mono" style={{ fontSize: 11, color: C.mute, marginBottom: 8 }}>MECHANICAL BREAKDOWN</div>
@@ -102,13 +109,18 @@ export default function OperatorDetail() {
       ) : (
       <Panel style={{ marginTop: 18, padding: 30 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 14 }}>
-          <div>
-            <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 8 }}>
-              <Tag tone={op.side}>{op.side === "atk" ? "ATTACKER" : "DEFENDER"}</Tag>
-              <Tag>{op.difficulty.toUpperCase()}</Tag>
+          <div style={{ display: "flex", gap: 18, alignItems: "center" }}>
+            <div style={{ flexShrink: 0, width: 76, height: 76, border: `2px solid ${side2}`, borderRadius: 1, background: `linear-gradient(160deg, ${side2}26, ${side2}0a)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <RoleIcon category={categoryOf(op.role)} size={42} strokeWidth={5} style={{ color: side2 }} />
             </div>
-            <h1 className="disp" style={{ fontSize: 44, margin: 0, textTransform: "uppercase", color: side2 }}>{op.name}</h1>
-            <div style={{ color: C.mute, fontSize: 15, marginTop: 4 }}>{op.role}</div>
+            <div>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 8 }}>
+                <Tag tone={op.side}>{op.side === "atk" ? "ATTACKER" : "DEFENDER"}</Tag>
+                <Tag>{op.difficulty.toUpperCase()}</Tag>
+              </div>
+              <h1 className="disp" style={{ fontSize: 44, margin: 0, textTransform: "uppercase", color: side2 }}>{op.name}</h1>
+              <div style={{ color: C.mute, fontSize: 15, marginTop: 4 }}>{op.role}</div>
+            </div>
           </div>
           <div style={{ display: "flex", gap: 20 }}>
             <div>

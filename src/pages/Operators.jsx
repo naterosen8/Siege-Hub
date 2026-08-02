@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { C } from "../theme.js";
-import { SectionLabel } from "../components/ui.jsx";
+import { SectionLabel, RoleIcon } from "../components/ui.jsx";
 import { OPERATORS, CATEGORIES, categoryOf } from "../data/operators.js";
 
 const SIDE_LABEL = { atk: "Attackers", def: "Defenders" };
@@ -71,22 +71,28 @@ export default function Operators({ side }) {
       <div className="mono" style={{ fontSize: 12, color: C.mute, marginBottom: 14 }}>{list.length} OPERATOR{list.length === 1 ? "" : "S"}</div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr))", gap: 10 }}>
-        {list.map((op) => (
-          <Link key={op.name} to={`/operators/${encodeURIComponent(op.name)}`} className="card opcard2"
-            style={{ border: `2px solid ${C.line}`, borderRadius: 1, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-            <div style={{ position: "relative", aspectRatio: "1 / 1", background: `${side2}1c`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span className="disp" style={{ fontSize: 34, color: side2, fontWeight: 800 }}>{initials(op.name)}</span>
-            </div>
-            <div style={{ padding: "7px 8px", borderTop: `2px solid ${C.line}` }}>
-              <div className="mono" style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.02em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {op.name}
+        {list.map((op) => {
+          const cat = categoryOf(op.role);
+          return (
+            <Link key={op.name} to={`/operators/${encodeURIComponent(op.name)}`} className="card opcard2"
+              style={{ border: `2px solid ${C.line}`, borderTop: `4px solid ${side2}`, borderRadius: 1, background: C.panel, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+              <div style={{ position: "relative", aspectRatio: "1 / 1", background: `linear-gradient(160deg, ${side2}22, ${side2}0a)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <RoleIcon category={cat} size={52} strokeWidth={5} style={{ color: side2, opacity: 0.9 }} />
+                <span className="mono" style={{ position: "absolute", top: 6, left: 6, fontSize: 10, fontWeight: 700, color: C.mute, border: `2px solid ${C.line}`, borderRadius: 1, padding: "1px 4px", background: C.panel }}>
+                  {initials(op.name)}
+                </span>
               </div>
-              <div style={{ fontSize: 10, color: C.mute, marginTop: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {op.role}
+              <div style={{ padding: "7px 8px", borderTop: `2px solid ${C.line}` }}>
+                <div className="mono" style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: "0.02em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {op.name}
+                </div>
+                <div style={{ fontSize: 10, color: C.mute, marginTop: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {op.role}
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
         {list.length === 0 && <p style={{ color: C.mute, gridColumn: "1 / -1" }}>No operators match that search.</p>}
       </div>
     </div>
